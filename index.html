@@ -6,249 +6,187 @@
 <title>CyberMesh Guard</title>
 
 <style>
-/* ================= COLORS ================= */
-:root{
-  --blue:#0b3c5d;
-  --cyan:#18a4a6;
-  --white:#ffffff;
-  --text:#475569;
+
+/* ===== GLOBAL ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', sans-serif;
 }
 
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box}
 body{
-  font-family:Arial, Helvetica, sans-serif;
-  background:var(--white);
-  color:var(--text);
+  background:#0A192F;
+  color:white;
 }
-html{scroll-behavior:smooth}
-section{scroll-margin-top:80px}
 
+/* ===== NAVBAR ===== */
 
-/* ================= NAVBAR ================= */
 .navbar{
+  background:#38bdf8;
+  padding:18px 8%;
   position:fixed;
-  top:0; left:0;
   width:100%;
-  height:70px;
-  padding:0 8%;
-  background:var(--blue);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  top:0;
+  left:0;
   z-index:1000;
 }
 
-.logo{
-  font-size:20px;
-  font-weight:800;
-  color:var(--white);
+.nav-container{
+  max-width:1300px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
-.logo span{ color:var(--cyan); }
+
+/* LOGO */
+.logo{
+  font-weight:800;
+  font-size:20px;
+  color:#0A192F;
+}
 
 /* DESKTOP MENU */
 .nav-links{
   display:flex;
-  align-items:center;
-  gap:26px;
-  list-style:none;
+  gap:35px;
 }
 
 .nav-links a{
   text-decoration:none;
-  font-size:14px;
+  color:#0A192F;
   font-weight:600;
-  color:var(--white);
-  padding:6px 4px;
+  font-size:14px;
   position:relative;
 }
 
-.nav-links a.active,
-.nav-links a:hover{
-  color:var(--cyan);
+/* MOBILE ICON */
+.menu-toggle{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+  color:#0A192F;
+  animation:pulse 1.5s infinite;
 }
 
-/* CONTACT BUTTON */
-.nav-btn{
-  background:var(--cyan);
-  color:#002 !important;
-  padding:10px 20px;
-  border-radius:20px;
-  font-weight:800;
+/* pulse animation */
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.2);}
+  100%{transform:scale(1);}
 }
 
-/* HAMBURGER */
-.hamburger{
+/* MOBILE MENU */
+.mobile-menu{
   display:none;
   flex-direction:column;
-  cursor:pointer;
+  background:#38bdf8;
+  width:100%;
+  text-align:center;
+  padding:20px 0;
 }
 
-.hamburger span{
-  width:26px;
-  height:3px;
-  background:var(--white);
-  margin:4px 0;
-  border-radius:2px;
-  transition:0.3s ease;
+.mobile-menu a{
+  padding:12px;
+  text-decoration:none;
+  color:#0A192F;
+  font-weight:600;
 }
 
-/* ================= MOBILE ================= */
+/* ===== RESPONSIVE ===== */
 @media(max-width:900px){
-  .hamburger{ display:flex; }
 
   .nav-links{
-    position:absolute;
-    top:70px;
-    left:0;
-    width:100%;
-    background:var(--blue);
-    flex-direction:column;
-    align-items:center;
-    gap:0;
-    display:none;
+    display:none;  /* hide desktop menu */
   }
 
-  .nav-links.show{
+  .menu-toggle{
+    display:block;
+  }
+
+  .mobile-menu.active{
     display:flex;
   }
 
-  .nav-links li{
-    width:100%;
-    text-align:center;
-    border-top:1px solid rgba(255,255,255,0.15);
-  }
-
-  .nav-links a{
-    display:block;
-    padding:14px 0;
-    font-size:15px;
-  }
-
-  .nav-btn{
-    margin:16px 0;
-    display:inline-block;
-  }
 }
-/* ================= FOOTER ================= */
-footer{
-  background:#021b2d;
-  color:#94a3b8;
-  text-align:center;
-  padding:22px;
-  font-size:13px;
-}
+
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
-<nav class="navbar">
-  <div class="logo">Cyber<span>Mesh</span> Guard</div>
+<header class="navbar">
+  <div class="nav-container">
+    <div class="logo">CyberMesh Guard</div>
 
-  <!-- HAMBURGER -->
-  <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#features">Features</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="menu-toggle" id="menuToggle">🫆</div>
   </div>
 
-  <!-- MENU -->
-  <ul class="nav-links" id="navMenu">
-    <li><a href="#home" class="active">Home</a></li>
-    <li><a href="#overview">Overview</a></li>
-    <li><a href="#founder">Founder</a></li>
-    <li><a href="#threat-analysis">Threat Analysis</a></li>
-    <li><a href="#why">Why choose</a></li>
-    <li><a href="#solution">Solutions</a></li>
-    <li><a href="#benefits">Benefits</a></li>
-    <li><a href="#industries">Industries</a></li>
-    <li><a href="#contact" class="nav-btn">Contact Us</a></li>
-  </ul>
-</nav>
-<!-- ================= HOME : ENTERPRISE INTELLIGENCE HERO ================= -->
-<section class="hero-pro" id="home">
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#process">Process</a>
+    <a href="#features">Features</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<script>
+
+const toggle = document.getElementById("menuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+
+toggle.addEventListener("click",()=>{
+  mobileMenu.classList.toggle("active");
+});
+
+/* Auto close when click */
+document.querySelectorAll(".mobile-menu a").forEach(link=>{
+  link.addEventListener("click",()=>{
+    mobileMenu.classList.remove("active");
+  });
+});
+
+</script>
+
+</body>
+</html>
+<!-- ================= PREMIUM CLEAN HERO ================= -->
+<section class="hero-clean" id="home">
 
   <div class="hero-overlay"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-signal"></div>
 
-  <div class="hero-container">
+  <div class="hero-content">
 
-    <span class="hero-eyebrow">
-      OPERATIONAL INTELLIGENCE PLATFORM
-    </span>
+    <div class="hero-badge">
+      Advanced Hybrid Risk Intelligence
+    </div>
 
-    <h1 class="hero-heading">
-      Operational Risk<br>
-      <span>Forms Quietly Across Systems</span>
+    <h1>
+      Securing <span>UK Operational SMEs</span>
+      Against Modern Cyber Threats
     </h1>
 
-    <p class="hero-text">
-      <strong>CyberMesh Guard</strong> provides early visibility into
-      cyber-physical and operational risk patterns across systems,
-      suppliers, and day-to-day workflows.
-      By correlating digital activity with operational behaviour,
-      leadership teams gain the clarity required to intervene early
-      before disruption, regulatory exposure, or financial loss occurs.
+    <p>
+      CyberMesh Guard unifies cybersecurity systems, operational workflows,
+      and physical access intelligence into one predictive protection layer —
+      enabling early detection before disruption impacts business continuity.
     </p>
 
-    <div class="hero-values">
-
-      <div class="value-item">
-        <span class="value-tick"></span>
-        <p><strong>Early-stage risk signals</strong> identified before incidents escalate</p>
-      </div>
-
-      <div class="value-item">
-        <span class="value-tick"></span>
-        <p><strong>Unified cyber-physical visibility</strong> across operational environments</p>
-      </div>
-
-      <div class="value-item">
-        <span class="value-tick"></span>
-        <p><strong>Explainable intelligence</strong> grounded in real operational evidence</p>
-      </div>
-
-      <div class="value-item">
-        <span class="value-tick"></span>
-        <p><strong>Preventive intervention</strong> instead of reactive incident response</p>
-      </div>
-
-    </div>
-
-    <div class="hero-metrics">
-
-      <div class="metric">
-        <h4>75%+</h4>
-        <p>Predictive accuracy in pilot environments</p>
-      </div>
-
-      <div class="metric">
-        <h4>30%</h4>
-        <p>Faster incident triage</p>
-      </div>
-
-      <div class="metric">
-        <h4>No</h4>
-        <p>New hardware or sensors required</p>
-      </div>
-
-      <div class="metric">
-        <h4>24/7</h4>
-        <p>Continuous behavioural monitoring</p>
-      </div>
-
-    </div>
-
-    <div class="hero-cta">
-      <a href="#contact" class="hero-button">
-        Request a Demo
-      </a>
-      <span class="hero-note">
-        Built for UK SMEs operating in complex, high-risk environments
-      </span>
+    <div class="hero-buttons">
+      <a href="#features" class="btn-primary">Explore Platform</a>
+      <a href="#contact" class="btn-outline">Request Demo</a>
     </div>
 
   </div>
@@ -256,2756 +194,209 @@ footer{
 </section>
 
 <style>
-/* ================= VARIABLES ================= */
-:root{
-  --blue:#0b3c5d;
-  --cyan:#18a4a6;
-  --white:#ffffff;
-  --text:#475569;
-}
 
-/* ================= HERO BASE ================= */
-.hero-pro{
+/* ================= HERO SECTION ================= */
+
+.hero-clean{
   position:relative;
-  min-height:100vh;
-  padding:150px 7% 120px;
-  background:
-    linear-gradient(180deg, rgba(11,60,93,0.92), rgba(11,60,93,0.88)),
-    url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2000&q=80");
-  background-size:cover;
-  background-position:center;
+  height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
+  text-align:center;
+  padding:100px 20px 0;
   overflow:hidden;
+  background:url("https://images.unsplash.com/photo-1550751827-4bd374c3f58b") center/cover no-repeat;
 }
 
-/* OVERLAY */
+/* Dark overlay for readability */
 .hero-overlay{
   position:absolute;
   inset:0;
-  background:
-    radial-gradient(circle at top, rgba(24,164,166,0.15), transparent 60%);
+  background:linear-gradient(135deg, rgba(7,26,51,0.95), rgba(10,25,47,0.9));
 }
 
-/* INTELLIGENCE GRID */
-.hero-grid{
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(rgba(24,164,166,0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(24,164,166,0.08) 1px, transparent 1px);
-  background-size:70px 70px;
-  opacity:0.25;
-}
-
-
-
-/* CONTENT */
-.hero-container{
+/* Content */
+.hero-content{
   position:relative;
-  max-width:1000px;
   z-index:2;
+  max-width:850px;
 }
 
-/* EYEBROW */
-.hero-eyebrow{
+/* Badge */
+.hero-badge{
+  display:inline-block;
+  background:rgba(56,189,248,0.15);
+  border:1px solid #38bdf8;
+  padding:6px 18px;
+  border-radius:30px;
   font-size:12px;
-  font-weight:700;
   letter-spacing:2px;
-  color:var(--cyan);
-  margin-bottom:18px;
-  display:inline-block;
+  color:#38bdf8;
+  margin-bottom:25px;
 }
 
-/* HEADING */
-.hero-heading{
-  font-size:46px;
-  font-weight:800;
-  line-height:1.12;
-  color:var(--white);
-  margin-bottom:26px;
-}
-.hero-heading span{
-  color:var(--cyan);
-}
-
-/* TEXT */
-.hero-text{
-  font-size:18px;
-  line-height:1.7;
-  color:#e6f0f6;
-  max-width:820px;
-  margin-bottom:44px;
-}
-
-/* VALUES */
-.hero-values{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px 36px;
-  margin-bottom:46px;
-}
-.value-item{
-  display:flex;
-  gap:14px;
-}
-.value-tick{
-  width:18px;
-  height:18px;
-  border-radius:50%;
-  border:2px solid var(--cyan);
-  position:relative;
-  margin-top:4px;
-}
-.value-tick::after{
-  content:"";
-  position:absolute;
-  left:4px;
-  top:1px;
-  width:5px;
-  height:9px;
-  border-right:2px solid var(--cyan);
-  border-bottom:2px solid var(--cyan);
-  transform:rotate(45deg);
-}
-.value-item p{
-  font-size:15.5px;
-  color:#eef5fa;
-}
-
-/* METRICS */
-.hero-metrics{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:24px;
-  margin-bottom:52px;
-  border-top:1px solid rgba(255,255,255,0.18);
-  border-bottom:1px solid rgba(255,255,255,0.18);
-  padding:26px 0;
-}
-.metric{
-  text-align:center;
-}
-.metric h4{
-  font-size:22px;
-  color:var(--cyan);
-  margin-bottom:6px;
-}
-.metric p{
-  font-size:13.5px;
-  color:#d9e8f1;
-}
-
-/* CTA */
-.hero-button{
-  display:inline-block;
-  padding:16px 54px;
-  background:var(--cyan);
-  color:var(--blue);
+/* Heading (Reduced Size) */
+.hero-content h1{
+  font-size:42px;  /* smaller as you requested */
+  line-height:1.3;
   font-weight:700;
-  font-size:15px;
-  border-radius:6px;
+  margin-bottom:20px;
+  color:white;
+}
+
+.hero-content h1 span{
+  color:#38bdf8;
+}
+
+/* Paragraph */
+.hero-content p{
+  font-size:17px;
+  line-height:1.8;
+  color:#cbd5e1;
+  margin-bottom:35px;
+}
+
+/* Buttons */
+.hero-buttons{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.btn-primary{
+  padding:12px 30px;
+  background:#38bdf8;
+  color:#071A33;
+  border-radius:40px;
+  font-weight:600;
   text-decoration:none;
-  transition:0.25s ease;
-}
-.hero-button:hover{
-  transform:translateY(-3px);
-  box-shadow:0 18px 40px rgba(24,164,166,0.45);
+  transition:0.3s;
 }
 
-.hero-note{
-  display:block;
-  margin-top:14px;
-  font-size:13px;
-  color:#cfe4ef;
+.btn-primary:hover{
+  background:white;
+  transform:translateY(-4px);
 }
 
-/* ================= MOBILE OPTIMISATION – PRO / PREMIUM ================= */
-
-/* TABLET & MOBILE */
-@media (max-width:900px){
-
-  .hero-pro{
-    padding:120px 6% 100px;
-  }
-
-  .hero-container{
-    text-align:center;
-  }
-
-  .hero-eyebrow{
-    font-size:11px;
-    letter-spacing:2px;
-    margin-bottom:16px;
-    display:inline-block;
-  }
-
-  .hero-heading{
-    font-size:34px;
-    line-height:1.15;
-  }
-
-  .hero-heading span{
-    display:block;
-    margin-top:8px;
-  }
-
-  .hero-text{
-    font-size:17px;
-    line-height:1.75;
-    margin:26px auto 40px;
-    max-width:620px;
-  }
-
-  /* VALUE STACK */
-  .hero-values{
-    grid-template-columns:1fr;
-    gap:20px;
-    margin-top:50px;
-  }
-
-  .value-item{
-    justify-content:center;
-    text-align:left;
-    max-width:520px;
-    margin:0 auto;
-  }
-
-  /* METRICS GRID */
-  .hero-metrics{
-    grid-template-columns:1fr 1fr;
-    gap:26px;
-    margin:70px auto 60px;
-    max-width:520px;
-  }
-
-  .metric h4{
-    font-size:26px;
-  }
-
-  .metric p{
-    font-size:14px;
-  }
-
-  /* CTA */
-  .hero-cta{
-    flex-direction:column;
-    gap:18px;
-  }
-
-  .hero-button{
-    width:100%;
-    max-width:320px;
-    padding:16px 0;
-    font-size:15.5px;
-  }
-
-  .hero-note{
-    font-size:13.5px;
-  }
+.btn-outline{
+  padding:12px 30px;
+  border:2px solid #38bdf8;
+  color:#38bdf8;
+  border-radius:40px;
+  font-weight:600;
+  text-decoration:none;
+  transition:0.3s;
 }
 
-/* SMALL MOBILE */
-@media (max-width:600px){
-
-  .hero-pro{
-    padding:100px 6% 90px;
-  }
-
-  .hero-heading{
-    font-size:30px;
-  }
-
-  .hero-text{
-    font-size:16.5px;
-    line-height:1.7;
-  }
-
-  .hero-values{
-    gap:18px;
-  }
-
-  .value-item p{
-    font-size:15.5px;
-  }
-
-  .hero-metrics{
-    grid-template-columns:1fr;
-    gap:22px;
-  }
-
-  .metric h4{
-    font-size:24px;
-  }
-
-  .metric p{
-    font-size:13.5px;
-  }
+.btn-outline:hover{
+  background:#38bdf8;
+  color:#071A33;
+  transform:translateY(-4px);
 }
 
-/* ULTRA SMALL */
-@media (max-width:420px){
-
-  .hero-heading{
-    font-size:28px;
+/* Responsive */
+@media(max-width:900px){
+  .hero-content h1{
+    font-size:32px;
   }
-
-  .hero-text{
-    font-size:16px;
-  }
-
-  .hero-button{
+  .hero-content p{
     font-size:15px;
   }
 }
+
 </style>
-<script>
-const hamburger = document.getElementById("hamburger");
-const navMenu = document.getElementById("navMenu");
-const navLinks = document.querySelectorAll(".nav-links a");
+<!-- ================= WEBSITE LEVEL ABOUT SECTION ================= -->
+<section class="about-website" id="about">
 
-/* TOGGLE MOBILE MENU */
-hamburger.addEventListener("click", () => {
-  navMenu.classList.toggle("show");
-});
+  <!-- Decorative Shapes -->
+  <div class="about-shape shape-left"></div>
+  <div class="about-shape shape-right"></div>
 
-/* CLOSE MENU ON CLICK + ACTIVE STATE */
-navLinks.forEach(link => {
-  link.addEventListener("click", () => {
-    navMenu.classList.remove("show");
+  <div class="about-wrapper">
 
-    navLinks.forEach(l => l.classList.remove("active"));
-    link.classList.add("active");
-  });
-});
-
-/* ACTIVE ON SCROLL */
-window.addEventListener("scroll", () => {
-  let fromTop = window.scrollY + 90;
-
-  navLinks.forEach(link => {
-    const section = document.querySelector(link.getAttribute("href"));
-    if(section){
-      if(
-        section.offsetTop <= fromTop &&
-        section.offsetTop + section.offsetHeight > fromTop
-      ){
-        navLinks.forEach(l => l.classList.remove("active"));
-        link.classList.add("active");
-      }
-    }
-  });
-});
-</script>
-<!-- ================= OVERVIEW SECTION ================= -->
-<section class="overview-pro" id="overview">
-
-  <div class="overview-wrap">
-
-    <span class="overview-tag">OVERVIEW</span>
-
-    <h2 class="overview-heading">
-      Intelligence That Connects<br>
-      <span>Risk, Behaviour & Operations</span>
-    </h2>
-
-    <div class="overview-line"></div>
-
-    <div class="overview-content">
-
-      <p>
-        Modern organisations operate within highly interconnected environments
-        where technology, suppliers, processes, and human decisions constantly
-        influence one another. In such ecosystems, risk does not emerge as a
-        single event it <strong>develops quietly through behavioural patterns</strong>
-        that are difficult to detect in isolation.
-      </p>
-
-      <p>
-        Traditional risk and monitoring tools focus on surface-level indicators:
-        delayed deliveries, failed controls, security alerts, or compliance breaches.
-        By the time these signals become visible, the underlying exposure has often
-        already matured, limiting response options and increasing impact.
-      </p>
-
-      <p>
-        Our platform is built to address this gap.
-        It continuously analyses how behaviours evolve across operations,
-        digital systems, and external dependencies identifying
-        <strong>early inconsistencies, correlations, and deviations</strong>
-        that signal rising risk long before disruption occurs.
-      </p>
-
-      <p>
-        By connecting weak signals across domains, leadership teams gain a
-        unified, contextual view of risk rather than fragmented dashboards.
-        This enables clear understanding of
-        <strong>where risk is forming, why it is forming,
-        and how quickly it is accelerating</strong>.
-      </p>
-
-      <p>
-        The result is not just visibility, but control.
-        Decision-makers can prioritise responses, allocate resources effectively,
-        and intervene early preventing minor issues from escalating into
-        operational, financial, or reputational damage.
-      </p>
-
-      <p>
-        In an environment where resilience, trust, and continuity are critical,
-        intelligence becomes foundational.
-        It supports <strong>stronger governance, safer operations,
-        and sustained organisational confidence</strong>.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-<style>
-:root{
-  --blue:#0b3c5d;
-  --cyan:#18a4a6;
-  --white:#ffffff;
-  --text:#475569;
-}
-
-/* SECTION */
-.overview-pro{
-  position:relative;
-  padding:150px 8%;
-  background:linear-gradient(180deg,#f8fafc,#ffffff);
-  overflow:hidden;
-}
-
-/* SOFT MOTION BACKGROUND */
-.overview-bg{
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 15% 25%, rgba(24,164,166,0.09), transparent 42%),
-    radial-gradient(circle at 85% 75%, rgba(11,60,93,0.09), transparent 42%);
-  animation:bgFloat 14s ease-in-out infinite alternate;
-}
-
-@keyframes bgFloat{
-  from{ transform:translateY(0); }
-  to{ transform:translateY(-40px); }
-}
-
-/* WRAPPER */
-.overview-wrap{
-  position:relative;
-  max-width:960px;
-  margin:auto;
-  z-index:2;
-}
-
-/* TAG */
-.overview-tag{
-  display:inline-block;
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:2px;
-  color:var(--cyan);
-  margin-bottom:18px;
-}
-
-/* HEADING */
-.overview-heading{
-  font-size:46px;
-  font-weight:900;
-  line-height:1.15;
-  color:var(--blue);
-}
-
-.overview-heading span{
-  color:var(--cyan);
-}
-
-/* ACCENT LINE */
-.overview-line{
-  width:96px;
-  height:4px;
-  background:linear-gradient(90deg,var(--cyan),var(--blue));
-  margin:28px 0 48px;
-  border-radius:4px;
-}
-
-/* CONTENT */
-.overview-content p{
-  font-size:18.5px;
-  line-height:1.85;
-  color:var(--text);
-  margin-bottom:30px;
-}
-
-/* EMPHASIS */
-.overview-content strong{
-  color:var(--blue);
-  font-weight:700;
-}
-
-/* ================= OVERVIEW – PRO PREMIUM MOBILE ================= */
-@media (max-width: 900px){
-
-  /* SECTION */
-  .overview-pro{
-    padding:120px 6% 110px;
-    background:linear-gradient(
-      180deg,
-      rgba(248, 248, 248, 0.96),
-      rgba(255, 255, 255, 0.98)
-    );
-  }
-
-  /* WRAP */
-  .overview-wrap{
-    max-width:100%;
-    margin:0 auto;
-  }
-
-  /* TAG */
-  .overview-tag{
-    display:inline-block;
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:2px;
-    color:var(--cyan);
-    margin-bottom:14px;
-  }
-
-  /* HEADING */
-  .overview-heading{
-    font-size:34px;
-    line-height:1.2;
-    font-weight:900;
-    color:#000000;
-    margin-bottom:18px;
-  }
-
-  .overview-heading span{
-    color:var(--cyan);
-    display:block;
-    margin-top:6px;
-  }
-
-  /* ANIMATED LINE */
-  .overview-line{
-    width:90px;
-    height:3px;
-    margin:18px 0 34px;
-    background:linear-gradient(
-      90deg,
-      transparent,
-      var(--cyan),
-      transparent
-    );
-    animation:overviewLineMove 3s linear infinite;
-  }
-
-  @keyframes overviewLineMove{
-    0%{ transform:translateX(-25px); opacity:0.6; }
-    50%{ transform:translateX(25px); opacity:1; }
-    100%{ transform:translateX(-25px); opacity:0.6; }
-  }
-
-  /* CONTENT */
-  .overview-content{
-    display:flex;
-    flex-direction:column;
-    gap:26px;
-  }
-
-  .overview-content p{
-    font-size:16.5px;
-    line-height:1.75;
-    color:#000000;
-    text-align:left;
-  }
-
-  .overview-content strong{
-    color:#18a4a6;
-    font-weight:700;
-  }
-
-  /* PREMIUM READABILITY SPACING */
-  .overview-content p:not(:last-child){
-    padding-bottom:8px;
-    border-bottom:1px solid rgba(24,164,166,0.15);
-  }
-
-}
-
-/* ================= SMALL MOBILE ================= */
-@media (max-width: 480px){
-
-  .overview-pro{
-    padding:100px 5% 90px;
-  }
-
-  .overview-heading{
-    font-size:30px;
-  }
-
-  .overview-content p{
-    font-size:16px;
-  }
-
-  .overview-line{
-    width:70px;
-  }
-
-}
-</style>
-
-<script>
-/* entrance animation */
-const overview = document.querySelector('.overview-wrap');
-overview.style.opacity = 0;
-overview.style.transform = 'translateY(28px)';
-overview.style.transition = '0.8s ease';
-
-window.addEventListener('scroll',()=>{
-  const top = overview.getBoundingClientRect().top;
-  if(top < window.innerHeight - 120){
-    overview.style.opacity = 1;
-    overview.style.transform = 'translateY(0)';
-  }
-});
-</script>
-
-<!-- ================= FOUNDER SECTION ================= -->
-<section class="founder-executive" id="founder">
-
-  <div class="founder-inner">
-
-    <!-- TOP LABEL -->
-    <span class="founder-eyebrow">LEADERSHIP & VISION</span>
-
-    <!-- MAIN TITLE -->
-    <h2 class="founder-title">
-      The Mind Behind<br>
-      <span>CyberMesh Guard</span>
-    </h2>
-
-    <!-- ANIMATED LINE -->
-    <div class="founder-line"></div>
-
-    <!-- SUB TITLE -->
-    <h3 class="founder-subtitle">
-      Building Intelligence That Sees Threats Before They Escalate
-    </h3>
-
-    <!-- CONTENT -->
-    <p class="founder-paragraph">
-      CyberMesh Guard was founded by <strong>Moin Ahmed</strong>,
-      driven by a clear understanding that modern cyber threats
-      no longer follow predictable timelines or patterns.
-    </p>
-
-    <p class="founder-paragraph">
-      Through deep exposure to system behaviour, operational risk,
-      and security gaps across digital environments, Moin identified
-      a critical weakness in traditional cybersecurity approaches
-      they respond after damage has already begun.
-    </p>
-
-    <!-- SECTION BREAK -->
-    <div class="founder-divider"></div>
-
-    <!-- SECOND TITLE -->
-    <h3 class="founder-subtitle cyan">
-      Why CyberMesh Guard Exists
-    </h3>
-
-    <p class="founder-paragraph">
-      CyberMesh Guard was created to shift organisations
-      from reactive defence to proactive awareness.
-      The platform focuses on behavioural intelligence,
-      continuous threat monitoring, and early signal detection
-      enabling teams to act with confidence, not urgency.
-    </p>
-
-    <p class="founder-paragraph">
-      Every decision behind the platform reflects a belief that
-      security intelligence must be transparent, explainable,
-      and aligned with real operational workflows.
-    </p>
-
-    <!-- QUOTE -->
-    <p class="founder-quote">
-      “True security is not about reacting faster
-      it’s about understanding risk early and acting decisively.”
-    </p>
-
-    <!-- SIGNATURE -->
-    <p class="founder-signature">
-      — Moin Ahmed<br>
-      Founder, CyberMesh Guard
-    </p>
-
-  </div>
-
-</section>
-
-<style>
-:root{
-  --cyan:#18a4a6;
-  --white:#ffffff;
-}
-
-/* SECTION */
-.founder-executive{
-  padding:150px 8%;
-  background:#0b3c5d;
-  color:var(--white);
-  overflow:hidden;
-}
-
-/* INNER */
-.founder-inner{
-  max-width:960px;
-  margin:auto;
-  position:relative;
-}
-
-/* EYEBROW */
-.founder-eyebrow{
-  display:inline-block;
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:2.5px;
-  color:var(--cyan);
-  margin-bottom:22px;
-}
-
-/* TITLE */
-.founder-title{
-  font-size:48px;
-  font-weight:800;
-  line-height:1.12;
-  margin-bottom:20px;
-}
-
-.founder-title span{
-  color:var(--cyan);
-}
-
-/* ANIMATED LINE */
-.founder-line{
-  width:110px;
-  height:2px;
-  background:rgba(24,164,166,0.3);
-  margin:26px 0 34px;
-  position:relative;
-  overflow:hidden;
-}
-
-.founder-line::after{
-  content:"";
-  position:absolute;
-  left:-40%;
-  top:0;
-  width:40%;
-  height:100%;
-  background:var(--cyan);
-  animation:lineMove 3s infinite ease-in-out;
-}
-
-@keyframes lineMove{
-  0%{ left:-40%; }
-  50%{ left:100%; }
-  100%{ left:100%; }
-}
-
-/* SUBTITLE */
-.founder-subtitle{
-  font-size:22px;
-  font-weight:600;
-  margin-bottom:28px;
-  color:var(--white);
-}
-
-.founder-subtitle.cyan{
-  color:var(--cyan);
-}
-
-/* TEXT */
-.founder-paragraph{
-  font-size:18px;
-  line-height:1.85;
-  margin-bottom:26px;
-  max-width:900px;
-}
-
-.founder-paragraph strong{
-  color:var(--cyan);
-  font-weight:600;
-}
-
-/* DIVIDER */
-.founder-divider{
-  width:100%;
-  height:1px;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    rgba(24,164,166,0.6),
-    transparent
-  );
-  margin:50px 0 40px;
-}
-
-/* QUOTE */
-.founder-quote{
-  margin-top:48px;
-  font-size:21px;
-  line-height:1.7;
-  font-style:italic;
-  color:var(--cyan);
-}
-
-/* SIGNATURE */
-.founder-signature{
-  margin-top:26px;
-  font-size:15px;
-  letter-spacing:0.4px;
-  color:var(--white);
-  opacity:0.85;
-}
-
-/* ================= FOUNDER SECTION – PRO PREMIUM ================= */
-
-.founder-executive{
-  background:#0b3c5d; /* deep navy */
-  color:#ffffff;
-  padding:140px 8%;
-}
-
-.founder-inner{
-  max-width:900px;
-  margin:auto;
-  text-align:center;
-}
-
-/* EYEBROW */
-.founder-eyebrow{
-  display:inline-block;
-  font-size:12px;
-  letter-spacing:2px;
-  font-weight:700;
-  color:#18a4a6; /* cyan */
-  margin-bottom:18px;
-}
-
-/* TITLE */
-.founder-title{
-  font-size:48px;
-  font-weight:800;
-  line-height:1.15;
-  margin-bottom:26px;
-}
-
-.founder-title span{
-  color:#18a4a6;
-}
-
-/* LINE */
-.founder-line{
-  width:90px;
-  height:3px;
-  margin:0 auto 42px;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    #18a4a6,
-    transparent
-  );
-  animation:lineFlow 3s infinite linear;
-}
-
-@keyframes lineFlow{
-  from{ transform:translateX(-20px); }
-  to{ transform:translateX(20px); }
-}
-
-/* SUBTITLE */
-.founder-subtitle{
-  font-size:22px;
-  font-weight:600;
-  margin-bottom:36px;
-  color:#e5f9fa;
-}
-
-.founder-subtitle.cyan{
-  color:#18a4a6;
-}
-
-/* PARAGRAPHS */
-.founder-paragraph{
-  font-size:18px;
-  line-height:1.9;
-  color:#dbeafe;
-  max-width:820px;
-  margin:0 auto 26px;
-}
-
-/* DIVIDER */
-.founder-divider{
-  width:100%;
-  height:1px;
-  margin:54px 0 42px;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    rgba(24,164,166,0.4),
-    transparent
-  );
-}
-
-/* QUOTE */
-.founder-quote{
-  font-size:22px;
-  font-style:italic;
-  color:#ffffff;
-  margin:52px auto 30px;
-  max-width:720px;
-}
-
-/* SIGNATURE */
-.founder-signature{
-  font-size:16px;
-  color:#18a4a6;
-  line-height:1.6;
-}
-
-/* ================= MOBILE – PRO PREMIUM ================= */
-
-@media(max-width:900px){
-
-  .founder-executive{
-    padding:110px 6%;
-  }
-
-  .founder-title{
-    font-size:34px;
-    line-height:1.2;
-  }
-
-  .founder-subtitle{
-    font-size:18px;
-    margin-bottom:28px;
-  }
-
-  .founder-paragraph{
-    font-size:16.5px;
-    line-height:1.85;
-  }
-
-  .founder-quote{
-    font-size:18px;
-    line-height:1.7;
-  }
-
-  .founder-line{
-    margin-bottom:34px;
-  }
-}
-
-/* EXTRA SMALL DEVICES */
-@media(max-width:480px){
-
-  .founder-title{
-    font-size:30px;
-  }
-
-  .founder-paragraph{
-    font-size:16px;
-  }
-
-  .founder-quote{
-    font-size:17px;
-  }
-}
-</style>
-
-<script>
-/* Smooth entrance */
-const founderBlock = document.querySelector('.founder-inner');
-founderBlock.style.opacity = 0;
-founderBlock.style.transform = 'translateY(24px)';
-founderBlock.style.transition = '0.8s ease';
-
-window.addEventListener('scroll',()=>{
-  if(founderBlock.getBoundingClientRect().top < window.innerHeight - 120){
-    founderBlock.style.opacity = 1;
-    founderBlock.style.transform = 'translateY(0)';
-  }
-});
-</script>
-
-<section class="threat-analysis" id="threat-analysis">
-
-  <div class="threat-inner">
-
-    <!-- LEFT SIDE -->
-    <div class="threat-left">
-
-      <span class="threat-eyebrow">THREAT ANALYSIS</span>
-
-      <h2 class="threat-title">
-        Supplier Threats<br>
-        <span>Do Not Appear Suddenly</span>
-      </h2>
-
-      <p class="threat-intro">
-        In operationally intensive environments, supplier failures and
-        cyber-physical incidents are rarely isolated events. They are
-        preceded by subtle behavioural and operational signals that
-        accumulate quietly over time and remain invisible to
-        traditional monitoring tools.
-      </p>
-
-    </div>
-
-    <!-- RIGHT SIDE -->
-    <div class="threat-right">
-
-      <div class="threat-stage">
-        <h3>Early Behavioural Drift</h3>
-        <p>
-          Small changes begin to appear across suppliers and systems
-          delayed responses, inconsistent delivery patterns,
-          access irregularities, and quality variance that seem minor
-          when viewed in isolation.
-        </p>
-      </div>
-
-      <div class="threat-line"></div>
-
-      <div class="threat-stage">
-        <h3>Signal Accumulation</h3>
-        <p>
-          Over time, these weak signals compound across locations,
-          shifts, vendors, and shared systems, forming measurable
-          patterns of operational and cyber exposure.
-        </p>
-      </div>
-
-      <div class="threat-line"></div>
-
-      <div class="threat-stage">
-        <h3>Hidden Exposure</h3>
-        <p>
-          Because traditional dashboards and audits operate in silos,
-          these connected signals remain unseen until key metrics,
-          service levels, or compliance thresholds finally fail.
-        </p>
-      </div>
-
-      <div class="threat-line"></div>
-
-      <div class="threat-stage">
-        <h3>Operational Impact</h3>
-        <p>
-          By the time threats surface visibly, organisations are already
-          facing downtime, remediation costs, regulatory pressure,
-          customer impact, and loss of operational control.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<style>
-:root{
-  --blue:#0b3c5d;
-  --cyan:#18a4a6;
-  --white:#ffffff;
-  --text:#475569;
-}
-
-/* SECTION */
-.threat-analysis{
-  padding:150px 8%;
-  background:var(--white);
-}
-
-/* GRID */
-.threat-inner{
-  max-width:1200px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:1fr 1.1fr;
-  gap:90px;
-  align-items:flex-start;
-}
-
-/* LEFT */
-.threat-eyebrow{
-  display:inline-block;
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:2px;
-  color:var(--cyan);
-  margin-bottom:22px;
-}
-
-.threat-title{
-  font-size:46px;
-  font-weight:800;
-  line-height:1.15;
-  color:var(--blue);
-  margin-bottom:26px;
-}
-
-.threat-title span{
-  color:var(--cyan);
-}
-
-.threat-intro{
-  font-size:19px;
-  line-height:1.85;
-  color:var(--text);
-  max-width:420px;
-}
-
-/* RIGHT */
-.threat-right{
-  display:flex;
-  flex-direction:column;
-  gap:46px;
-}
-
-/* STAGES */
-.threat-stage{
-  max-width:540px;
-}
-
-.threat-stage h3{
-  font-size:24px;
-  font-weight:700;
-  color:var(--cyan);
-  margin-bottom:12px;
-}
-
-.threat-stage p{
-  font-size:18px;
-  line-height:1.8;
-  color:var(--text);
-}
-
-/* CONNECTING LINE */
-.threat-line{
-  width:160px;
-  height:2px;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    var(--cyan),
-    transparent
-  );
-}
-
-/* ================= MOBILE – PRO / PREMIUM ================= */
-@media(max-width:900px){
-
-  .threat-analysis{
-    padding:120px 6%;
-  }
-
-  .threat-inner{
-    grid-template-columns:1fr;
-    gap:80px;
-  }
-
-  /* LEFT SIDE */
-  .threat-eyebrow{
-    font-size:12px;
-    letter-spacing:2px;
-    margin-bottom:14px;
-    display:inline-block;
-  }
-
-  .threat-title{
-    font-size:34px;
-    line-height:1.25;
-    margin-bottom:22px;
-  }
-
-  .threat-title span{
-    display:block;
-    margin-top:6px;
-  }
-
-  .threat-intro{
-    font-size:17px;
-    line-height:1.85;
-    opacity:0.95;
-    max-width:100%;
-  }
-
-  /* RIGHT SIDE FLOW */
-  .threat-right{
-    position:relative;
-    padding-left:18px;
-  }
-
-  /* vertical guide line */
-  .threat-right::before{
-    content:"";
-    position:absolute;
-    left:0;
-    top:6px;
-    width:2px;
-    height:100%;
-    background:linear-gradient(
-      180deg,
-      transparent,
-      rgba(24,164,166,0.9),
-      transparent
-    );
-  }
-
-  .threat-stage{
-    position:relative;
-    padding-left:26px;
-    margin-bottom:44px;
-  }
-
-  /* cyan indicator dot */
-  .threat-stage::before{
-    content:"";
-    position:absolute;
-    left:-10px;
-    top:6px;
-    width:10px;
-    height:10px;
-    border-radius:50%;
-    background:#18a4a6;
-    box-shadow:0 0 14px rgba(24,164,166,0.9);
-  }
-
-  .threat-stage h3{
-    font-size:21px;
-    line-height:1.3;
-    margin-bottom:10px;
-  }
-
-  .threat-stage p{
-    font-size:16.5px;
-    line-height:1.8;
-    opacity:0.95;
-  }
-
-  /* REMOVE horizontal lines on mobile */
-  .threat-line{
-    reminder: none;
-    display:none;
-  }
-
-}
-</style>
-
-<script>
-/* Soft stagger reveal */
-document.querySelectorAll('.threat-stage, .threat-title, .threat-intro').forEach((el,i)=>{
-  el.style.opacity = 0;
-  el.style.transform = 'translateY(24px)';
-  el.style.transition = '0.7s ease';
-
-  setTimeout(()=>{
-    el.style.opacity = 1;
-    el.style.transform = 'translateY(0)';
-  }, i * 180);
-});
-</script>
-<!-- ================= WHY CHOOSE US ================= -->
-<section class="why-choose-dark" id="why">
-
-  <div class="why-container">
-
-    <span class="why-eyebrow">WHY CHOOSE US</span>
-
-    <h2 class="why-title">
-      Designed for <span>Early Risk Clarity</span><br>
-      Built for Operational Control
-    </h2>
-
-    <div class="why-content">
-
-      <p>
-        In most organisations, supplier and operational risks surface only
-        after delays, quality failures, or security incidents have already
-        disrupted business continuity.
-        <span class="cyan">By then, options are limited and costs are high.</span>
-      </p>
-
-      <p>
-        CyberMesh Guard is purpose-built to change that reality.
-        By continuously analysing behavioural signals across suppliers,
-        systems, and operational activity, the platform uncovers early
-        indicators that traditional audits, scorecards, and dashboards
-        fail to detect.
-      </p>
-
-      <p>
-        Risk intelligence is embedded directly into day-to-day workflows
-        not layered on top as another tool to manage.
-        Teams gain visibility into emerging threats in context, understand
-        potential impact, and act decisively before issues escalate into
-        disruption.
-      </p>
-
-      <p>
-        Leadership teams gain a clear, unified view of operational risk
-        without changing how the organisation works.
-        Decisions become faster, more confident, and grounded in
-        real behavioural insight rather than lagging indicators.
-      </p>
-
-      <p class="why-highlight">
-        This is not reactive monitoring.<br>
-        It is continuous visibility into risk before it becomes a problem.
-      </p>
-
-    </div>
-
-    <!-- subtle animated divider -->
-    <div class="why-line">
-      <span></span>
-    </div>
-
-  </div>
-
-</section>
-
-<style>
-:root{
-  --blue:#0b3c5d;
-  --cyan:#18a4a6;
-  --white:#ffffff;
-}
-
-/* SECTION */
-.why-choose-dark{
-  background:linear-gradient(180deg,#0b3c5d,#072b44);
-  padding:130px 8%;
-  color:var(--white);
-}
-
-/* CONTAINER */
-.why-container{
-  max-width:1100px;
-  margin:auto;
-}
-
-/* EYEBROW */
-.why-eyebrow{
-  display:inline-block;
-  font-size:12px;
-  letter-spacing:3px;
-  font-weight:700;
-  color:var(--cyan);
-  margin-bottom:18px;
-}
-
-/* TITLE */
-.why-title{
-  font-size:46px;
-  line-height:1.15;
-  font-weight:900;
-  color:var(--white);
-  margin-bottom:42px;
-}
-
-.why-title span{
-  color:var(--cyan);
-}
-
-/* CONTENT */
-.why-content p{
-  font-size:18.5px;
-  line-height:1.8;
-  color:#e6f1f5;
-  max-width:900px;
-  margin-bottom:26px;
-}
-
-/* EMPHASIS */
-.cyan{
-  color:var(--cyan);
-  font-weight:600;
-}
-
-.why-highlight{
-  font-size:21px;
-  font-weight:700;
-  color:var(--white);
-  margin-top:36px;
-}
-
-/* DIVIDER */
-.why-line{
-  margin-top:70px;
-  width:140px;
-  height:4px;
-  background:rgba(24,164,166,0.3);
-  position:relative;
-  overflow:hidden;
-  border-radius:4px;
-}
-
-.why-line span{
-  position:absolute;
-  left:-40%;
-  top:0;
-  width:40%;
-  height:100%;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    var(--cyan),
-    transparent
-  );
-  animation:lineMove 2.6s infinite ease-in-out;
-}
-
-@keyframes lineMove{
-  0%{ left:-40%; }
-  50%{ left:100%; }
-  100%{ left:100%; }
-}
-
-/* ================= WHY CHOOSE US – PRO PREMIUM MOBILE ================= */
-@media (max-width: 900px){
-
-  .why-choose-dark{
-    padding:110px 6% 120px;
-  }
-
-  .why-container{
-    max-width:720px;
-    margin:auto;
-  }
-
-  /* EYEBROW */
-  .why-eyebrow{
-    display:inline-block;
-    font-size:11px;
-    letter-spacing:2.2px;
-    margin-bottom:18px;
-    color:#22d3ee; /* cyan */
-  }
-
-  /* TITLE */
-  .why-title{
-    font-size:32px;
-    line-height:1.2;
-    margin-bottom:42px;
-  }
-
-  .why-title span{
-    display:inline-block;
-    margin-top:6px;
-  }
-
-  /* CONTENT FLOW */
-  .why-content{
-    display:flex;
-    flex-direction:column;
-    gap:22px; /* premium paragraph rhythm */
-  }
-
-  .why-content p{
-    font-size:16.8px;
-    line-height:1.85;
-    color:#e5e7eb;
-  }
-
-  .why-content p .cyan{
-    display:block;
-    margin-top:6px;
-    color:#22d3ee;
-    font-weight:600;
-  }
-
-  /* HIGHLIGHT STATEMENT */
-  .why-highlight{
-    margin-top:28px;
-    font-size:17.5px;
-    line-height:1.75;
-    font-weight:600;
-    color:#ffffff;
-  }
-
-  /* DIVIDER */
-  .why-line{
-    margin-top:64px;
-    height:1px;
-    width:100%;
-    position:relative;
-    overflow:hidden;
-    background:rgba(255,255,255,0.12);
-  }
-
-  .why-line span{
-    position:absolute;
-    left:-30%;
-    top:0;
-    width:30%;
-    height:100%;
-    background:linear-gradient(
-      90deg,
-      transparent,
-      #22d3ee,
-      transparent
-    );
-    animation:whyLineMove 2.8s ease-in-out infinite;
-  }
-}
-
-/* SMALL MOBILE */
-@media (max-width: 520px){
-
-  .why-title{
-    font-size:28px;
-  }
-
-  .why-content p{
-    font-size:16px;
-  }
-
-  .why-highlight{
-    font-size:16.5px;
-  }
-}
-
-/* ANIMATION */
-@keyframes whyLineMove{
-  0%{ left:-30%; }
-  50%{ left:100%; }
-  100%{ left:100%; }
-}
-</style>
-
-<script>
-/* smooth entrance animation */
-const why = document.querySelector('.why-choose-dark');
-why.style.opacity = 0;
-why.style.transform = 'translateY(28px)';
-why.style.transition = '0.8s ease';
-
-window.addEventListener('scroll',()=>{
-  if(why.getBoundingClientRect().top < window.innerHeight - 120){
-    why.style.opacity = 1;
-    why.style.transform = 'translateY(0)';
-  }
-});
-</script>
-<section class="solution-strategy" id="solution">
-
-  <div class="solution-container">
-
-    <header class="solution-header">
-      <span class="solution-eyebrow">THE SOLUTION</span>
-
+    <!-- TOP HEADING AREA -->
+    <div class="about-top">
+      <span class="about-tag">ABOUT CYBERMESH GUARD</span>
       <h2>
-        Turning Early Signals Into<br>
-        <span>Confident Operational Control</span>
-      </h2>
-
-      <p>
-        CyberMesh Guard is built around how cyber and operational risk actually
-        develops inside UK SMEs not as isolated technical incidents, but as
-        patterns that quietly evolve across systems, people, and physical
-        operations.
-      </p>
-    </header>
-
-    <div class="solution-flowline">
-
-      <div class="solution-stage">
-        <h3>Risk Forms Long Before It Is Visible</h3>
-        <p>
-          In real operational environments, cyber and supply-chain incidents
-          do not occur suddenly. They emerge through subtle changes in access
-          behaviour, ticket patterns, shared systems, and day-to-day workflows
-          that traditional tools fail to connect.
-        </p>
-      </div>
-
-      <div class="solution-stage">
-        <h3>Operational Signals Are Correlated Intelligently</h3>
-        <p>
-          CyberMesh Guard continuously correlates data from ticketing systems,
-          access logs, operational telemetry, and CCTV metadata to surface
-          relationships that siloed cybersecurity or physical security tools
-          cannot detect.
-        </p>
-      </div>
-
-      <div class="solution-stage">
-        <h3>Emerging Risk Becomes Explainable</h3>
-        <p>
-          Instead of generic alerts, the platform delivers explainable risk
-          intelligence  showing where risk is forming, which systems or
-          suppliers are involved, and how operational impact may unfold.
-        </p>
-      </div>
-
-      <div class="solution-stage">
-        <h3>Intervention Happens While Control Is Still Possible</h3>
-        <p>
-          Early visibility enables UK SMEs to act before incidents escalate
-          into downtime, financial loss, regulatory exposure, or supply-chain
-          disruption reducing response time and operational damage.
-        </p>
-      </div>
-
-      <div class="solution-stage">
-        <h3>Decision-Making Improves Across Operations</h3>
-        <p>
-          Over time, organisations move from reactive incident handling to
-          proactive risk governance, supported by continuous intelligence,
-          automated correlation, and GDPR-compliant audit trails.
-        </p>
-      </div>
-
-      <div class="solution-stage">
-        <h3>Risk Intelligence Becomes a Strategic Capability</h3>
-        <p>
-          What begins as early detection evolves into a durable operational
-          advantage strengthening supplier oversight, improving resilience,
-          and enabling confident growth across UK and international markets.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<style>
-:root{
-  --blue:#0b3c5d;
-  --cyan:#18a4a6;
-  --white:#ffffff;
-  --text:#475569;
-}
-
-/* SECTION */
-.solution-strategy{
-  position:relative;
-  background:var(--white);
-  padding:150px 8%;
-  overflow:hidden;
-}
-
-/* AMBIENT GLOW */
-.solution-glow{
-  position:absolute;
-  top:-30%;
-  left:50%;
-  width:800px;
-  height:800px;
-  transform:translateX(-50%);
-  background:radial-gradient(
-    circle,
-    rgba(24,164,166,0.18),
-    transparent 65%
-  );
-  pointer-events:none;
-}
-
-
-/* CONTAINER */
-.solution-container{
-  max-width:1020px;
-  margin:auto;
-  position:relative;
-  z-index:2;
-}
-
-/* HEADER */
-.solution-header{
-  text-align:center;
-  max-width:820px;
-  margin:0 auto 140px;
-}
-
-.solution-eyebrow{
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:2px;
-  color:var(--cyan);
-  margin-bottom:18px;
-  display:inline-block;
-}
-
-.solution-header h2{
-  font-size:46px;
-  line-height:1.15;
-  color:var(--blue);
-  margin-bottom:20px;
-}
-
-.solution-header h2 span{
-  color:var(--cyan);
-}
-
-/* UNDERLINE */
-.solution-underline{
-  width:96px;
-  height:3px;
-  margin:0 auto 30px;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    var(--cyan),
-    transparent
-  );
-  animation:underlineMove 0s linear infinite;
-}
-
-@keyframes underlineMove{
-  from{ transform:translateX(-36px); }
-  to{ transform:translateX(36px); }
-}
-
-.solution-header p{
-  font-size:18.5px;
-  line-height:1.8;
-  color:var(--text);
-}
-
-/* FLOW LINE */
-.solution-flowline{
-  position:relative;
-  padding-left:48px;
-}
-
-.solution-flowline::before{
-  content:"";
-  position:absolute;
-  left:14px;
-  top:0;
-  bottom:0;
-  width:2px;
-  background:linear-gradient(
-    180deg,
-    transparent,
-    var(--cyan),
-    transparent
-  );
-  animation:flowPulse 2s linear infinite;
-}
-
-@keyframes flowPulse{
-  0%,100%{ opacity:0.4; }
-  50%{ opacity:1; }
-}
-
-/* STAGE */
-.solution-stage{
-  position:relative;
-  margin-bottom:110px;
-  opacity:0;
-  transform:translateY(30px);
-}
-
-/* DOT */
-.solution-stage::before{
-  content:"";
-  position:absolute;
-  left:-40px;
-  top:8px;
-  width:14px;
-  height:14px;
-  border-radius:50%;
-  background:var(--cyan);
-  box-shadow:
-    0 0 16px rgba(0, 2, 2, 0.9),
-    0 0 40px rgba(24,164,166,0.45);
-}
-
-/* TEXT */
-.solution-stage h3{
-  font-size:27px;
-  font-weight:700;
-  color:var(--cyan);
-  margin-bottom:14px;
-}
-
-.solution-stage p{
-  font-size:17.5px;
-  line-height:1.9;
-  color:var(--text);
-  max-width:780px;
-}
-
-/* ================= MOBILE : PRO / PREMIUM (CARD FLOW) ================= */
-@media (max-width: 900px){
-
-  /* SECTION */
-  .solution-strategy{
-    padding:110px 6% 120px;
-    background:linear-gradient(
-      180deg,
-      rgba(11,60,93,0.04),
-      transparent
-    );
-  }
-
-  /* HEADER */
-  .solution-header{
-    text-align:center;
-    margin-bottom:56px;
-  }
-
-  .solution-eyebrow{
-    font-size:11px;
-    letter-spacing:2.4px;
-    margin-bottom:12px;
-    display:inline-block;
-    opacity:0.85;
-  }
-
-  .solution-header h2{
-    font-size:33px;
-    line-height:1.25;
-    margin-bottom:16px;
-    font-weight:700;
-  }
-
-  .solution-header h2 span{
-    display:block;
-    margin-top:6px;
-  }
-
-  .solution-header p{
-    font-size:16.8px;
-    line-height:1.72;
-    margin:0 auto;
-    max-width:100%;
-    opacity:0.9;
-  }
-
-  /* FLOW */
-  .solution-flowline{
-    display:flex;
-    flex-direction:column;
-    gap:28px; /* card rhythm */
-  }
-
-  /* CARD */
-  .solution-stage{
-    position:relative;
-    padding:28px 22px 30px;
-    text-align:center;
-    background:#ffffff;
-    border-radius:18px;
-
-    border:1px solid rgba(24,164,166,0.25);
-
-    box-shadow:
-      0 10px 24px rgba(0,0,0,0.08),
-      inset 0 0 0 1px rgba(255,255,255,0.6);
-
-    transition:transform .35s ease, box-shadow .35s ease;
-  }
-
-  /* CARD ACCENT BAR */
-  .solution-stage::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:4px;
-    border-radius:18px 18px 0 0;
-    background:linear-gradient(
-      90deg,
-      rgba(24,164,166,0.9),
-      rgba(24,164,166,0.3)
-    );
-  }
-
-  /* HOVER / TOUCH FEEL */
-  .solution-stage:hover{
-    transform:translateY(-4px);
-    box-shadow:
-      0 18px 42px rgba(0,0,0,0.12),
-      0 0 0 1px rgba(24,164,166,0.35);
-  }
-
-  .solution-stage h3{
-    font-size:21px;
-    line-height:1.34;
-    margin-bottom:12px;
-    font-weight:700;
-  }
-
-  .solution-stage p{
-    font-size:16px;
-    line-height:1.7;
-    opacity:0.9;
-    max-width:520px;
-    margin:0 auto;
-  }
-}
-
-/* ================= EXTRA SMALL DEVICES ================= */
-@media (max-width: 520px){
-
-  .solution-strategy{
-    padding:88px 5% 82px;
-  }
-
-  .solution-header{
-    margin-bottom:44px;
-  }
-
-  .solution-header h2{
-    font-size:29px;
-  }
-
-  .solution-stage{
-    padding:24px 18px 26px;
-    border-radius:16px;
-  }
-
-  .solution-stage h3{
-    font-size:19.5px;
-  }
-
-  .solution-stage p{
-    font-size:15.5px;
-    line-height:1.68;
-  }
-}
-</style>
-
-<script>
-/* Progressive reveal */
-const solutionStages = document.querySelectorAll('.solution-stage');
-
-window.addEventListener('scroll',()=>{
-  solutionStages.forEach((stage,i)=>{
-    const top = stage.getBoundingClientRect().top;
-    if(top < window.innerHeight - 120){
-      stage.style.transition = '0.75s ease ' + (i * 0.12) + 's';
-      stage.style.opacity = 1;
-      stage.style.transform = 'translateY(0)';
-    }
-  });
-});
-</script>
-
-<!-- ================= BENEFITS : STATEMENT FLOW PRO ================= -->
-<section class="benefits-statement" id="benefits">
-
-  <div class="benefits-container">
-
-    <span class="benefits-eyebrow">BUSINESS BENEFITS</span>
-
-    <h2 class="benefits-headline">
-      Control Risk <span>Before It Controls You</span>
-    </h2>
-
-    <p class="benefits-lead">
-      CyberMesh Guard converts early cyber and operational signals
-      into preventive intelligence that protects business continuity,
-      regulatory compliance, and financial stability.
-    </p>
-
-    <div class="benefits-statements">
-
-      <div class="benefit-row">
-        <div class="benefit-index">01</div>
-        <div class="benefit-content">
-          <h3>Earlier Visibility, Fewer Surprises</h3>
-          <p>
-            Identify cyber-physical risk patterns across operations
-            before incidents escalate into downtime, breaches,
-            or regulatory exposure.
-          </p>
-        </div>
-      </div>
-
-      <div class="benefit-divider"></div>
-
-      <div class="benefit-row">
-        <div class="benefit-index">02</div>
-        <div class="benefit-content">
-          <h3>Confident, Evidence-Led Decisions</h3>
-          <p>
-            Replace fragmented alerts and assumptions with
-            correlated intelligence drawn from tickets,
-            access behaviour, and operational telemetry.
-          </p>
-        </div>
-      </div>
-
-      <div class="benefit-divider"></div>
-
-      <div class="benefit-row">
-        <div class="benefit-index">03</div>
-        <div class="benefit-content">
-          <h3>Lower Cost of Cyber Incidents</h3>
-          <p>
-            Reduce financial loss by detecting hybrid threats
-            early — preventing extended downtime, remediation
-            costs, and reputational damage.
-          </p>
-        </div>
-      </div>
-
-      <div class="benefit-divider"></div>
-
-      <div class="benefit-row">
-        <div class="benefit-index">04</div>
-        <div class="benefit-content">
-          <h3>Built-In Governance & Audit Readiness</h3>
-          <p>
-            Maintain continuous, GDPR-compliant audit trails
-            and incident records without additional tooling
-            or manual reporting effort.
-          </p>
-        </div>
-      </div>
-
-      <div class="benefit-divider"></div>
-
-      <div class="benefit-row">
-        <div class="benefit-index">05</div>
-        <div class="benefit-content">
-          <h3>Designed for SME Operational Reality</h3>
-          <p>
-            Deliver enterprise-grade intelligence using
-            systems SMEs already operate without
-            new hardware, sensors, or SOC infrastructure.
-          </p>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<style>
-/* ================= SECTION ================= */
-.benefits-statement{
-  position:relative;
-  padding:150px 8%;
-  background:
-    radial-gradient(circle at top, rgba(24,164,166,0.18), transparent 55%),
-    linear-gradient(180deg,#0b3c5d,#072a42);
-  color:var(--white);
-  overflow:hidden;
-}
-.benefit-content h3{
-  font-size:26px;
-  margin-bottom:10px;
-  color:var(--cyan);
-}
-/* GRID */
-.benefits-grid{
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size:70px 70px;
-  opacity:0.12;
-}
-
-/* CONTAINER */
-.benefits-container{
-  position:relative;
-  max-width:1000px;
-  margin:auto;
-}
-
-/* EYEBROW */
-.benefits-eyebrow{
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:2px;
-  color:var(--cyan);
-  margin-bottom:18px;
-  display:inline-block;
-}
-
-/* HEADLINE */
-.benefits-headline{
-  font-size:54px;
-  line-height:1.05;
-  margin-bottom:22px;
-}
-
-.benefits-headline span{
-  color:var(--cyan);
-}
-
-/* LEAD */
-.benefits-lead{
-  font-size:20px;
-  line-height:1.8;
-  max-width:760px;
-  margin-bottom:90px;
-  color:#e2e8f0;
-}
-
-/* FLOW */
-.benefits-statements{
-  display:flex;
-  flex-direction:column;
-}
-
-/* ROW */
-.benefit-row{
-  display:grid;
-  grid-template-columns:90px 1fr;
-  gap:40px;
-  align-items:flex-start;
-  opacity:0;
-  transform:translateY(30px);
-  transition:0.8s ease;
-}
-
-/* NUMBER WITH GLOW */
-.benefit-index{
-  font-size:64px;
-  font-weight:900;
-  color:rgb(255, 255, 255);
-  line-height:1;
-  position:relative;
-}
-
-/* CONTENT */
-.benefit-content h3{
-  font-size:26px;
-  margin-bottom:10px;
-}
-
-.benefit-content p{
-  font-size:17.5px;
-  line-height:1.75;
-  max-width:720px;
-  color:#dbeafe;
-}
-
-/* DIVIDER WITH TRAVEL LIGHT */
-.benefit-divider{
-  position:relative;
-  height:1px;
-  margin:46px 0;
-  background:rgba(24,164,166,0.25);
-  overflow:hidden;
-}
-
-.benefit-divider span{
-  position:absolute;
-  left:-40%;
-  width:40%;
-  height:100%;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    var(--cyan),
-    transparent
-  );
-  animation:travel 1s infinite ease-in-out;
-}
-
-@keyframes travel{
-  0%{ left:-40%; }
-  60%{ left:120%; }
-  100%{ left:120%; }
-}
-
-/* REVEAL */
-.benefit-row.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* HOVER MICRO */
-@media (hover:hover){
-  .benefit-row:hover .benefit-content h3{
-    color:var(--cyan);
-  }
-}
-
-/* ================= PRO-PREMIUM MOBILE (BENEFITS SECTION) ================= */
-@media (max-width:900px){
-
-  /* SECTION SPACING */
-  .benefits-statement{
-    padding:96px 6% 104px;
-  }
-
-  /* EYEBROW */
-  .benefits-eyebrow{
-    font-size:11px;
-    letter-spacing:2.2px;
-    margin-bottom:14px;
-    display:inline-block;
-    color:var(--cyan);
-  }
-
-  /* MAIN HEADLINE */
-  .benefits-headline{
-    font-size:34px;
-    line-height:1.2;
-    font-weight:900;
-    margin-bottom:22px;
-  }
-
-  .benefits-headline span{
-    display:block;
-    color:var(--cyan);
-    margin-top:6px;
-  }
-
-  /* INTRO TEXT */
-  .benefits-lead{
-    font-size:16.8px;
-    line-height:1.75;
-    margin:0 auto 64px;
-    max-width:100%;
-    opacity:0.95;
-  }
-
-  /* FLOW CONTAINER */
-  .benefits-statements{
-    display:flex;
-    flex-direction:column;
-    gap:38px;
-  }
-
-  /* ROW */
-  .benefit-row{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:16px;
-    padding:26px 22px;
-    border-radius:16px;
-
-    /* subtle glass feel */
-    background:rgba(255,255,255,0.03);
-    backdrop-filter:blur(6px);
-
-    /* premium separation */
-    box-shadow:
-      inset 0 0 0 1px rgba(255,255,255,0.06),
-      0 16px 40px rgba(0,0,0,0.35);
-  }
-
-  /* BIG INDEX */
-  .benefit-index{
-    font-size:40px;
-    font-weight:900;
-    color:var(--cyan);
-    line-height:1;
-    opacity:0.9;
-  }
-
-  /* CONTENT */
-  .benefit-content h3{
-    font-size:18px;
-    line-height:1.35;
-    font-weight:900;
-    margin-bottom:6px;
-    color:#ffffff;
-  }
-
-  .benefit-content p{
-    font-size:15.8px;
-    line-height:1.7;
-    color:#cbd5e1;
-  }
-
-  /* DIVIDER (VERTICAL FEEL → HORIZONTAL GLOW) */
-  .benefit-divider{
-    height:1px;
-    width:100%;
-    background:linear-gradient(
-      90deg,
-      transparent,
-      rgba(24,164,166,0.6),
-      transparent
-    );
-  }
-
-}
-</style>
-
-<script>
-/* reveal animation */
-const benefitRows = document.querySelectorAll('.benefit-row');
-
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-    }
-  });
-},{ threshold:0.3 });
-
-benefitRows.forEach(r=>observer.observe(r));
-</script>
-
-<!-- ================= INDUSTRIES SECTION ================= -->
-<section class="industries-pro" id="industries">
-
-  <!-- background accents -->
-  <div class="industries-bg-grid"></div>
-  <div class="industries-glow"></div>
-
-  <div class="industries-wrap">
-
-    <span class="industries-tag">INDUSTRIES WE SERVE</span>
-
-    <h2 class="industries-title">
-      Built for <span>Operationally Intensive UK SMEs</span>
-    </h2>
-
-    <p class="industries-intro">
-      CyberMesh Guard is purpose-built for sectors where cyber threats,
-      physical operations, and third-party dependencies intersect.
-      These industries face heightened exposure to supply-chain attacks,
-      insider risk, and operational disruption yet lack enterprise-grade
-      visibility and resources.
-    </p>
-
-    <div class="industries-grid">
-
-  <div class="industry-card">
-    <div class="industry-icon">🏬</div>
-    <h3>Warehousing Operations</h3>
-    <p>
-      Warehousing environments rely on shared terminals, shift-based access,
-      CCTV systems, and physical entry points. CyberMesh Guard identifies
-      behavioural anomalies and insider risk across cyber and physical layers
-      before disruption occurs.
-    </p>
-    <span class="industry-meta">
-      Shared access · Insider risk · Operational continuity
-    </span>
-  </div>
-
-  <div class="industry-card highlight">
-    <div class="industry-icon">🚚</div>
-    <h3>Logistics & Distribution</h3>
-    <p>
-      Logistics SMEs operate across multiple vendors, routes, and third-party
-      systems. CyberMesh Guard detects early cyber and operational threat signals
-      that could cascade into delivery delays or service failure.
-    </p>
-    <span class="industry-meta">
-      Supply chain · Third-party exposure · SLA risk
-    </span>
-  </div>
-
-  <div class="industry-card">
-    <div class="industry-icon">🏭</div>
-    <h3>Manufacturing SMEs</h3>
-    <p>
-      Manufacturing operations combine digital systems with physical production.
-      The platform monitors abnormal behaviour across access logs, ticketing
-      systems, and operational data that traditional security tools miss.
-    </p>
-    <span class="industry-meta">
-      Production flow · Insider threats · Compliance
-    </span>
-  </div>
-
-  <div class="industry-card">
-    <div class="industry-icon">🧰</div>
-    <h3>Operational Service Providers</h3>
-    <p>
-      Service-based SMEs depend on SaaS platforms, open-source tools,
-      and contractor access. CyberMesh Guard maps how vulnerabilities
-      propagate across people, systems, and locations.
-    </p>
-    <span class="industry-meta">
-      SaaS risk · Credential misuse · Vendor exposure
-    </span>
-  </div>
-
-  <div class="industry-card">
-    <div class="industry-icon">📋</div>
-    <h3>Regulated SME Environments</h3>
-    <p>
-      Organisations operating under GDPR and audit requirements gain
-      structured visibility into incidents, access events, and operational
-      risk without adding tools or specialist teams.
-    </p>
-    <span class="industry-meta">
-      Audit readiness · Governance · Evidence trails
-    </span>
-  </div>
-
-  <!-- ✅ NEW BOX ADDED -->
-  <div class="industry-card">
-    <div class="industry-icon">🔐</div>
-    <h3>Cyber-Physical Operations</h3>
-    <p>
-      Environments where IT systems intersect with physical operations
-      face blended threat scenarios. CyberMesh Guard correlates cyber events,
-      access behaviour, and operational signals to reveal hidden risk patterns.
-    </p>
-    <span class="industry-meta">
-      Cyber-physical risk · Behavioural signals · Early detection
-    </span>
-  </div>
-
-</div>
-
-</section>
-
-<style>
-:root{
-  --blue:#0b3c5d;
-  --cyan:#18a4a6;
-  --white:#ffffff;
-  --text:#475569;
-}
-
-/* SECTION */
-.industries-pro{
-  position:relative;
-  padding:130px 8%;
-  background:linear-gradient(180deg,#f7fcfd,var(--white));
-  overflow:hidden;
-}
-
-/* subtle grid */
-.industries-bg-grid{
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(rgba(24,164,166,0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(24,164,166,0.08) 1px, transparent 1px);
-  background-size:60px 60px;
-  opacity:0.25;
-}
-
-/* WRAP */
-.industries-wrap{
-  position:relative;
-  max-width:1200px;
-  margin:auto;
-  text-align:center;
-}
-
-/* TAG */
-.industries-tag{
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:2px;
-  color:var(--cyan);
-  margin-bottom:14px;
-  display:inline-block;
-}
-
-/* TITLE */
-.industries-title{
-  font-size:42px;
-  line-height:1.15;
-  color:var(--blue);
-  margin-bottom:22px;
-}
-.industries-title span{ color:var(--cyan); }
-
-/* INTRO */
-.industries-intro{
-  max-width:760px;
-  margin:0 auto 80px;
-  font-size:18px;
-  line-height:1.7;
-  color:var(--text);
-}
-
-/* GRID */
-.industries-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:38px;
-}
-
-/* CARD */
-.industry-card{
-  position:relative;
-  background:var(--white);
-  padding:40px 30px 44px;
-  border-radius:20px;
-  border:2px solid rgb(31, 159, 161);   /* CYAN BORDER */
-  text-align:left;
-  transition:0.4s ease;
-  overflow:hidden;
-}
-
-/* animated border glow */
-.industry-card::after{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  border-radius:22px;
-  background:linear-gradient(
-    120deg,
-    transparent,
-    rgba(24,164,166,0.35); 
-    transparent
-  );
-  opacity:0;
-  transition:0.4s ease;
-}
-
-
-
-/* ICON */
-.industry-icon{
-  font-size:30px;
-  margin-bottom:18px;
-}
-
-/* TEXT */
-.industry-card h3{
-  font-size:20px;
-  color:var(--blue);
-  margin-bottom:12px;
-}
-
-.industry-card p{
-  font-size:16px;
-  line-height:1.65;
-  color:var(--text);
-  margin-bottom:18px;
-}
-
-.industry-meta{
-  font-size:12.5px;
-  font-weight:700;
-  letter-spacing:0.6px;
-  color:var(--cyan);
-}
-
-
-/* FOOTER */
-.industries-footer{
-  margin-top:80px;
-  font-size:18px;
-  color:var(--blue);
-}
-
-/* ================= PRO MOBILE DESIGN ================= */
-@media (max-width:900px){
-
-  .industries-pro{
-    padding:100px 6% 90px;
-    
-  }
-
-  /* TITLE */
-  .industries-title{
-    font-size:34px;
-    line-height:1.2;
-    text-align:center;
-    margin-bottom:18px;
-  }
-
-  .industries-tag{
-    display:block;
-    text-align:center;
-    margin-bottom:10px;
-  }
-
-  /* INTRO */
-  .industries-intro{
-    font-size:17px;
-    line-height:1.7;
-    text-align:center;
-    margin-left:auto;
-    margin-right:auto;
-    margin-bottom:60px;
-  }
-
-  /* GRID STACK */
-  .industries-grid{
-    grid-template-columns:1fr;
-    gap:34px;
-  }
-
-  /* CARD */
-  .industry-card{
-    padding:36px 26px 40px;
-    text-align:center;
-    border-radius:22px;
-  }
-
-  .industry-card h3{
-    font-size:21px;
-    margin-bottom:14px;
-  }
-
-  .industry-card p{
-    font-size:16.5px;
-    line-height:1.7;
-  }
-
-  /* META */
-  .industry-meta{
-    margin-top:20px;
-    font-size:12.5px;
-    letter-spacing:0.4px;
-    display:block;
-  }
-
-  /* HIGHLIGHT CARD */
-  .industry-card.highlight{
-    transform:none;
-    box-shadow:
-      0 25px 60px rgba(0,0,0,0.45),
-      inset 0 0 0 1px rgba(24,164,166,0.45);
-  }
-
-  /* GLOW ADJUSTMENT */
-  .industries-glow{
-    width:300px;
-    height:300px;
-    top:-120px;
-    right:-120px;
-    opacity:0.6;
-  }
-
-}
-
-/* EXTRA SMALL DEVICES */
-@media (max-width:480px){
-
-  .industries-title{
-    font-size:30px;
-  }
-
-  .industries-intro{
-    font-size:16px;
-  }
-
-  .industry-card h3{
-    font-size:20px;
-  }
-
-  .industry-card p{
-    font-size:15.8px;
-  }
-
-}
-</style>
-
-<script>
-/* premium stagger reveal */
-document.querySelectorAll('.industry-card').forEach((card,i)=>{
-  card.style.opacity="0";
-  card.style.transform="translateY(24px)";
-  setTimeout(()=>{
-    card.style.transition="all .7s ease";
-    card.style.opacity="1";
-    card.style.transform="translateY(0)";
-  }, i*130);
-});
-</script>
-
-
-
-<!-- ================= ENTERPRISE CONTACT SECTION ================= -->
-<section class="contact-enterprise" id="contact">
-
-  <div class="contact-shell">
-
-    <!-- HEADER -->
-    <div class="contact-header">
-      <span class="contact-eyebrow">CONTACT</span>
-      <h2>
-        Talk to Us About <span>Proactive Risk Intelligence</span>
+        A Unified <span>Cyber-Operational Intelligence</span> Platform
       </h2>
       <p>
-        Supplier risk rarely appears as a single failure. It builds quietly across
-        vendors, behaviours, delivery patterns, and compliance gaps.
-        Our team helps you surface those signals early before they disrupt operations.
+        Built exclusively for UK warehouses and logistics SMEs operating in
+        high-risk hybrid environments.
       </p>
     </div>
 
     <!-- CONTENT GRID -->
-    <div class="contact-grid">
+    <div class="about-grid">
 
-      <!-- VALUE SIDE -->
-      <div class="contact-value">
+      <!-- LEFT TEXT -->
+      <div class="about-text">
 
-        <h3>Why Teams Reach Out</h3>
+        <p class="highlight">
+          CyberMesh Guard removes the blind spots created by disconnected
+          cybersecurity, workflow and physical access systems.
+        </p>
 
-        <ul class="value-list">
-          <li>
-            <span class="tick"></span>
-            Confidential discussions with enterprise & operations leaders
-          </li>
-          <li>
-            <span class="tick"></span>
-            Clear visibility into early supplier-risk indicators
-          </li>
-          <li>
-            <span class="tick"></span>
-            Data-driven guidance not sales pressure
-          </li>
-          <li>
-            <span class="tick"></span>
-            Practical next steps tailored to your risk landscape
-          </li>
-        </ul>
+        <p>
+          Most SME environments rely on separate tools that never communicate.
+          Digital security monitors cyber events. Access control logs physical entry.
+          Workflow systems manage operational processes.
+        </p>
 
-        <div class="trust-line">
-          Trusted by teams who value clarity, control, and continuity.
+        <p>
+          This fragmentation creates exploitable visibility gaps.
+          CyberMesh Guard unifies these domains into one predictive
+          hybrid intelligence architecture.
+        </p>
+
+        <div class="about-line"></div>
+
+        <div class="about-metrics">
+          <div class="metric">
+            <h3>30%</h3>
+            <span>Faster Incident Triage</span>
+          </div>
+          <div class="metric">
+            <h3>Unified</h3>
+            <span>Digital + Physical Correlation</span>
+          </div>
+          <div class="metric">
+            <h3>GDPR</h3>
+            <span>Compliance Automation</span>
+          </div>
         </div>
 
       </div>
 
-      <!-- ACTION SIDE -->
-      <div class="contact-action">
+      <div class="about-features">
 
-        <h4>Start a Strategic Conversation</h4>
+  <div class="feature-box">
+    <div class="feature-number">01</div>
+    <h4>Unified Visibility</h4>
+    <p>Correlates workflow telemetry, cyber events and access intelligence.</p>
+  </div>
 
-        <p>
-          Share a little about your organisation and risk priorities.
-          We’ll respond with relevant insights not generic demos.
-        </p>
+  <div class="feature-box">
+    <div class="feature-number">02</div>
+    <h4>Predictive Detection</h4>
+    <p>Machine learning identifies abnormal hybrid behaviour patterns.</p>
+  </div>
 
-        <a
-          class="contact-cta"
-          href="mailto:contact@yourcompany.com
-          ?subject=Supplier%20Risk%20Intelligence%20Discussion
-          &body=Hello%20Team,%0D%0A%0D%0AI%20would%20like%20to%20discuss%20supplier%20risk,%20early%20warning%20signals,%20and%20how%20your%20intelligence%20platform%20supports%20operational%20decision-making.%0D%0A%0D%0ACompany:%0D%0ARole:%0D%0AIndustry:%0D%0ACurrent%20Risk%20Challenges:%0D%0A%0D%0ARegards,"
-        >
-          Contact Our Team
-        </a>
+  <div class="feature-box">
+    <div class="feature-number">03</div>
+    <h4>Operational Resilience</h4>
+    <p>Prevents downtime before escalation impacts business continuity.</p>
+  </div>
 
-        <span class="response-note">
-          Typical response time: within 1 business day
-        </span>
+  <div class="feature-box">
+    <div class="feature-number">04</div>
+    <h4>Cloud Native</h4>
+    <p>No hardware retrofits — API-first integration architecture.</p>
+  </div>
 
-      </div>
-
+</div>
     </div>
 
   </div>
@@ -3013,584 +404,2646 @@ document.querySelectorAll('.industry-card').forEach((card,i)=>{
 </section>
 
 <style>
-:root{
-  --blue:#0b3c5d;
-  --cyan:#18a4a6;
-  --white:#ffffff;
-  --text:#475569;
-}
 
-/* SECTION BASE */
-.contact-enterprise{
-  padding:140px 8%;
-  background:
-    radial-gradient(circle at top right, rgba(24,164,166,0.18), transparent 55%),
-    linear-gradient(180deg, var(--blue), #062f49);
-  color:var(--white);
-}
-
-/* WRAPPER */
-.contact-shell{
-  max-width:1200px;
-  margin:auto;
-}
-
-/* HEADER */
-.contact-header{
-  max-width:780px;
-  margin-bottom:90px;
-}
-
-.contact-eyebrow{
-  display:inline-block;
-  font-size:12px;
-  letter-spacing:2px;
-  font-weight:700;
-  color:var(--cyan);
-  margin-bottom:14px;
-}
-
-.contact-header h2{
-  font-size:44px;
-  line-height:1.15;
-  margin-bottom:22px;
-}
-
-.contact-header h2 span{
-  color:var(--cyan);
-}
-
-.contact-header p{
-  font-size:18.5px;
-  line-height:1.8;
-  color:#dbeafe;
-}
-
-/* GRID */
-.contact-grid{
+/* ================= ABOUT WEBSITE STYLE ================= */
+/* Attractive 2x2 Grid */
+.about-features{
   display:grid;
-  grid-template-columns:1.1fr 0.9fr;
-  gap:80px;
-  align-items:flex-start;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
 }
 
-/* VALUE SIDE */
-.contact-value h3{
-  font-size:26px;
-  margin-bottom:26px;
-}
-
-.value-list{
-  list-style:none;
-  padding:0;
-  margin-bottom:36px;
-}
-
-.value-list li{
-  display:flex;
-  align-items:flex-start;
-  gap:14px;
-  font-size:17px;
-  line-height:1.6;
-  margin-bottom:16px;
-  color:#e0f2fe;
-}
-
-/* BLUE TICK */
-.tick{
-  width:20px;
-  height:20px;
-  border-radius:50%;
-  background:linear-gradient(135deg, var(--cyan), #3fd0d4);
+/* Premium Card Style */
+.feature-box{
   position:relative;
-  margin-top:4px;
-  flex-shrink:0;
-}
-
-.tick::after{
-  content:"";
-  position:absolute;
-  left:6px;
-  top:3px;
-  width:6px;
-  height:10px;
-  border:solid var(--white);
-  border-width:0 2px 2px 0;
-  transform:rotate(45deg);
-}
-
-/* TRUST LINE */
-.trust-line{
-  font-size:15px;
-  color:#bae6fd;
-  opacity:0.85;
-}
-
-/* ACTION SIDE */
-.contact-action{
-  background:var(--white);
-  color:var(--text);
-  padding:46px 42px;
-  border-radius:20px;
-  box-shadow:0 40px 90px rgba(0,0,0,0.4);
-  position:relative;
+  background:white;
+  padding:30px 25px 25px;
+  border-radius:18px;
+  transition:0.4s ease;
   overflow:hidden;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
-/* TOP ACCENT */
-.contact-action::before{
+/* Gradient top border */
+.feature-box::before{
   content:"";
   position:absolute;
   top:0;
   left:0;
   width:100%;
-  height:5px;
-  background:linear-gradient(90deg, var(--cyan), var(--blue));
+  height:4px;
+  background:linear-gradient(90deg,#0A192F,#38bdf8);
 }
 
-.contact-action h4{
-  font-size:24px;
-  color:var(--blue);
-  margin-bottom:16px;
+/* Big soft number background */
+.feature-number{
+  position:absolute;
+  top:15px;
+  right:20px;
+  font-size:42px;
+  font-weight:800;
+  color:rgba(10,25,47,0.08);
 }
 
-.contact-action p{
-  font-size:16.5px;
-  line-height:1.7;
-  margin-bottom:30px;
+/* Title */
+.feature-box h4{
+  font-size:17px;
+  margin-bottom:8px;
+  color:#0A192F;
 }
 
-/* CTA */
-.contact-cta{
-  display:inline-block;
-  padding:15px 42px;
-  border-radius:999px;
-  background:linear-gradient(135deg, var(--cyan), var(--blue));
-  color:var(--white);
-  font-weight:700;
-  text-decoration:none;
-  transition:0.35s ease;
+/* Text */
+.feature-box p{
+  font-size:14px;
+  line-height:1.6;
+  color:#475569;
 }
 
-.contact-cta:hover{
-  transform:translateY(-4px);
-  box-shadow:0 22px 50px rgba(24,164,166,0.55);
+/* Hover Effect */
+.feature-box:hover{
+  transform:translateY(-10px);
+  box-shadow:0 18px 40px rgba(0,0,0,0.15);
 }
 
-/* NOTE */
-.response-note{
-  display:block;
-  margin-top:18px;
-  font-size:13.5px;
-  color:#64748b;
-}
-
-/* ================= MOBILE — PRO / PREMIUM ================= */
-@media (max-width:900px){
-
-  /* SECTION */
-  .contact-enterprise{
-    padding:100px 6% 90px;
-  }
-
-  /* HEADER */
-  .contact-header{
-    text-align:center;
-    margin-bottom:50px;
-  }
-
-  .contact-header h2{
-    font-size:32px;
-    line-height:1.25;
-    margin-bottom:18px;
-  }
-
-  .contact-header p{
-    font-size:16.5px;
-    line-height:1.75;
-    max-width:520px;
-    margin:0 auto;
-    color:#dbeafe;
-  }
-
-  /* GRID STACK */
-  .contact-grid{
+/* Responsive */
+@media(max-width:900px){
+  .about-features{
     grid-template-columns:1fr;
-    gap:56px;
   }
+}
+.about-website{
+  background:#38bdf8;
+  padding:160px 8%;
+  position:relative;
+  overflow:hidden;
+}
 
-  /* VALUE SIDE */
-  .contact-value{
-    text-align:left;
+/* Decorative Shapes */
+.about-shape{
+  position:absolute;
+  width:400px;
+  height:400px;
+  background:rgba(255,255,255,0.08);
+  border-radius:50%;
+  filter:blur(80px);
+}
+
+.shape-left{ top:-120px; left:-120px; }
+.shape-right{ bottom:-150px; right:-150px; }
+
+/* Wrapper */
+.about-wrapper{
+  max-width:1300px;
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+/* Top Section */
+.about-top{
+  text-align:center;
+  margin-bottom:80px;
+}
+
+.about-tag{
+  background:#0A192F;
+  color:#38bdf8;
+  padding:6px 20px;
+  border-radius:30px;
+  font-size:12px;
+  letter-spacing:2px;
+  display:inline-block;
+  margin-bottom:20px;
+}
+
+.about-top h2{
+  font-size:40px;
+  margin-bottom:20px;
+  color:#0A192F;
+}
+
+.about-top h2 span{
+  color:white;
+}
+
+.about-top p{
+  max-width:650px;
+  margin:auto;
+  color:#0A192F;
+  line-height:1.7;
+}
+
+/* Grid Layout */
+.about-grid{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:80px;
+}
+
+/* Left Text */
+.about-text{
+  color:#0A192F;
+}
+
+.highlight{
+  font-size:18px;
+  font-weight:600;
+  margin-bottom:25px;
+}
+
+.about-text p{
+  line-height:1.8;
+  margin-bottom:20px;
+}
+
+.about-line{
+  width:80px;
+  height:4px;
+  background:#0A192F;
+  margin:30px 0;
+}
+
+/* Metrics */
+.about-metrics{
+  display:flex;
+  gap:40px;
+  margin-top:30px;
+}
+
+.metric h3{
+  font-size:26px;
+  color:white;
+}
+
+.metric span{
+  font-size:13px;
+}
+
+/* Right Feature Boxes */
+.about-features{
+  display:grid;
+  gap:25px;
+}
+
+.feature-box{
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  transition:0.4s;
+}
+
+.feature-box h4{
+  color:#0A192F;
+  margin-bottom:10px;
+}
+
+.feature-box p{
+  color:#334155;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.feature-box:hover{
+  transform:translateY(-8px);
+  box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .about-grid{
+    grid-template-columns:1fr;
   }
-
-  .contact-value h3{
-    font-size:22px;
-    margin-bottom:18px;
-    color:var(--cyan);
+  .about-metrics{
+    flex-direction:column;
+    gap:15px;
   }
+}
+/* Sequential Auto Floating Animation */
 
-  .value-list li{
-    font-size:15.5px;
-    line-height:1.7;
-    margin-bottom:14px;
-    padding-left:30px;
-    position:relative;
+.feature-box{
+  animation: floatUp 6s ease-in-out infinite;
+}
+
+/* Delay each box */
+.feature-box:nth-child(1){ animation-delay: 0s; }
+.feature-box:nth-child(2){ animation-delay: 1s; }
+.feature-box:nth-child(3){ animation-delay: 2s; }
+.feature-box:nth-child(4){ animation-delay: 3s; }
+
+/* Floating Motion */
+@keyframes floatUp{
+  0%{
+    transform: translateY(0px);
   }
-
-  .value-list li .tick{
-    left:0;
-    top:6px;
+  25%{
+    transform: translateY(-10px);
   }
-
-  .trust-line{
-    margin-top:26px;
-    font-size:13.5px;
-    color:#9ca3af;
+  50%{
+    transform: translateY(0px);
   }
-
-  /* ACTION SIDE */
-  .contact-action{
-    padding:34px 26px 38px;
-    border-radius:18px;
-    background:rgba(255,255,255,0.04);
-    backdrop-filter:blur(6px);
-    text-align:center;
+  75%{
+    transform: translateY(8px);
   }
-
-  .contact-action h4{
-    font-size:22px;
-    margin-bottom:14px;
+  100%{
+    transform: translateY(0px);
   }
+}
+/* ================= TRAVELLING INNER LIGHT ================= */
 
-  .contact-action p{
-    font-size:15.5px;
-    line-height:1.7;
-    margin-bottom:28px;
-    color:#e0f2fe;
+.feature-box{
+  position:relative;
+  overflow:hidden;
+}
+
+/* Light layer */
+.feature-box::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-150%;
+  width:120%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(56,189,248,0.35),
+    transparent
+  );
+  transform:skewX(-25deg);
+  animation:lightTravel 4s linear infinite;
+}
+
+/* Delay each box */
+.feature-box:nth-child(1)::after{ animation-delay:0s; }
+.feature-box:nth-child(2)::after{ animation-delay:1s; }
+.feature-box:nth-child(3)::after{ animation-delay:2s; }
+.feature-box:nth-child(4)::after{ animation-delay:3s; }
+
+/* Animation */
+@keyframes lightTravel{
+  0%{
+    left:-150%;
   }
-
-  /* CTA */
-  .contact-cta{
-    width:100%;
-    padding:16px 0;
-    font-size:15.5px;
-    border-radius:999px;
+  100%{
+    left:150%;
   }
+}
+</style>
+<!-- ================= PREMIUM PROCESS SECTION ================= -->
+<section class="process-section" id="process">
 
-  .response-note{
-    margin-top:16px;
-    font-size:12.5px;
-    color:#94a3b8;
+  <div class="process-container">
+<div class="hero-badge">
+      PROCESS CYBERMESH GUARD
+    </div>
+    <div class="section-tag">HOW CYBERMESH GUARD WORKS</div>
+    <h2>Our <span>Hybrid Risk Intelligence</span> Process</h2>
+    <p class="section-subtext">
+      A structured five-stage intelligence architecture for UK operational SMEs.
+    </p>
+
+    <div class="timeline">
+
+      <!-- STEP 1 -->
+      <div class="timeline-item" style="--delay:0s">
+        <div class="timeline-number">01</div>
+        <div class="timeline-content">
+          <img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png" class="step-icon">
+          <h3>Data Integration</h3>
+          <p>Secure API onboarding connects workflow systems and access telemetry.</p>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="timeline-item" style="--delay:0.2s">
+        <div class="timeline-number">02</div>
+        <div class="timeline-content">
+          <img src="https://cdn-icons-png.flaticon.com/512/3523/3523063.png" class="step-icon">
+          <h3>Signal Correlation</h3>
+          <p>Graph modelling links users, permissions and operational events.</p>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="timeline-item" style="--delay:0.4s">
+        <div class="timeline-number">03</div>
+        <div class="timeline-content">
+          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" class="step-icon">
+          <h3>Hybrid Detection</h3>
+          <p>Machine learning detects early warning cyber-physical threats.</p>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="timeline-item" style="--delay:0.6s">
+        <div class="timeline-number">04</div>
+        <div class="timeline-content">
+          <img src="https://cdn-icons-png.flaticon.com/512/2910/2910791.png" class="step-icon">
+          <h3>Predictive Alerting</h3>
+          <p>Impact-weighted alerts reduce triage time and risk exposure.</p>
+        </div>
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="timeline-item" style="--delay:0.8s">
+        <div class="timeline-number">05</div>
+        <div class="timeline-content">
+          <img src="https://cdn-icons-png.flaticon.com/512/1048/1048953.png" class="step-icon">
+          <h3>Compliance Automation</h3>
+          <p>GDPR-ready audit trails auto-generated for governance clarity.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* Badge */
+.hero-badge{
+  display:inline-block;
+  background:rgba(56,189,248,0.15);
+  border:1px solid #38bdf8;
+  padding:6px 18px;
+  border-radius:30px;
+  font-size:12px;
+  letter-spacing:2px;
+  color:#38bdf8;
+  margin-bottom:25px;
+}
+/* SECTION */
+.process-section{
+  background:linear-gradient(135deg,#071A33,#0A1E3F);
+  padding:130px 8%;
+  font-family:Arial, sans-serif;
+  color:#fff;
+}
+
+.process-container{
+  max-width:1200px;
+  margin:auto;
+  text-align:center;
+}
+
+.section-tag{
+  font-size:12px;
+  letter-spacing:0.3em;
+  color:#38bdf8;
+}
+
+.process-section h2{
+  font-size:34px;
+  margin-top:15px;
+}
+
+.process-section h2 span{
+  color:#38bdf8;
+}
+
+.section-subtext{
+  color:#cbd5e1;
+  max-width:600px;
+  margin:20px auto 70px;
+  line-height:1.7;
+}
+
+/* ================= HORIZONTAL TIMELINE ================= */
+
+.timeline{
+  position:relative;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:25px;
+}
+
+/* Horizontal Line */
+.timeline::before{
+  content:"";
+  position:absolute;
+  top:30px;
+  left:0;
+  right:0;
+  height:2px;
+  background:linear-gradient(90deg,transparent,#38bdf8,transparent);
+  z-index:0;
+}
+
+/* ITEM */
+.timeline-item{
+  position:relative;
+  text-align:center;
+  z-index:1;
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeUp 0.6s ease forwards;
+  animation-delay:var(--delay);
+}
+
+@keyframes fadeUp{
+  to{
+    opacity:1;
+    transform:translateY(0);
   }
 }
 
-/* ================= SMALL DEVICES (EXTRA POLISH) ================= */
-@media (max-width:480px){
+/* NUMBER */
+.timeline-number{
+  width:60px;
+  height:60px;
+  background:#38bdf8;
+  color:#0A192F;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  margin:0 auto 18px;
+  box-shadow:0 0 20px rgba(56,189,248,0.6);
+  animation:pop 0.5s ease forwards;
+  animation-delay:var(--delay);
+  opacity:0;
+}
 
-  .contact-header h2{
-    font-size:29px;
+@keyframes pop{
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+  from{
+    opacity:0;
+    transform:scale(0.7);
+  }
+}
+
+/* BOX (ALL SAME SIZE) */
+.timeline-content{
+  background:rgba(255,255,255,0.06);
+  padding:18px 20px;
+  border-radius:14px;
+  width:210px;
+  height:140px;
+  border:1px solid rgba(56,189,248,0.25);
+  backdrop-filter:blur(8px);
+  transition:0.4s ease;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+}
+
+/* ICON */
+.step-icon{
+  width:24px;
+  margin-bottom:6px;
+  filter:brightness(0) invert(1);
+}
+
+/* HEADING */
+.timeline-content h3{
+  color:#38bdf8;
+  font-size:13px;
+  margin-bottom:6px;
+}
+
+/* TEXT */
+.timeline-content p{
+  font-size:11px;
+  color:#cbd5e1;
+  line-height:1.5;
+  text-align:center;
+}
+
+/* Hover */
+.timeline-item:hover .timeline-number{
+  transform:scale(1.1);
+}
+
+.timeline-content:hover{
+  transform:translateY(-5px);
+  background:rgba(56,189,248,0.12);
+}
+
+/* Responsive */
+@media(max-width:1000px){
+  .timeline{
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .timeline::before{
+    display:none;
+  }
+}
+/* Travelling light on horizontal line */
+.timeline::after{
+  content:"";
+  position:absolute;
+  top:29px;
+  left:-100px;
+  width:100px;
+  height:4px;
+  background:linear-gradient(90deg,transparent,#38bdf8,transparent);
+  animation:travelLine 4s linear infinite;
+}
+
+@keyframes travelLine{
+  0%{left:-100px;}
+  100%{left:100%;}
+}
+
+</style>
+<!-- ================= PREMIUM FEATURES SECTION ================= -->
+<section class="features-premium" id="features">
+
+  <div class="features-container">
+
+    <div class="section-tag">CYBERMESH GUARD FEATURES</div>
+    <h2>Core <span>Hybrid Protection Capabilities</span></h2>
+    <p class="section-sub">
+      Built specifically for UK warehouses and logistics SMEs requiring cyber-operational intelligence without hardware retrofits.
+    </p>
+<!-- SAME ENERGY DIVIDER (NAVY VERSION) -->
+      <div class="faq-divider navy">
+        <div class="divider-core"></div>
+        <div class="divider-ring ring1"></div>
+        <div class="divider-ring ring2"></div>
+      </div>
+    </div>
+    <div class="features-grid">
+
+      <!-- FEATURE 1 -->
+      <div class="feature-card">
+        <div class="light-border"></div>
+        <img src="image1.jpg" class="feature-img">
+        <h3>Unified System Integration</h3>
+        <p>Seamless API connectivity across workflow systems, access control and operational platforms.</p>
+
+        <div class="extra-content">
+          <p>
+            CyberMesh Guard eliminates siloed infrastructure by connecting
+            cybersecurity platforms, workflow systems and access logs into
+            one unified hybrid intelligence mesh.
+          </p>
+          <ul>
+            <li>🔹 API-based onboarding</li>
+            <li>🔹 No hardware replacement required</li>
+            <li>🔹 Cloud-native architecture</li>
+          </ul>
+        </div>
+
+        <button class="feature-btn">Learn More</button>
+      </div>
+
+      <!-- FEATURE 2 -->
+      <div class="feature-card">
+        <div class="light-border"></div>
+        <img src="image2.jpg" class="feature-img">
+        <h3>Graph-Based Intelligence Layer</h3>
+        <p>Structured correlation of digital and physical signals into predictive architecture.</p>
+
+        <div class="extra-content">
+          <p>
+            Our graph engine maps behavioural relationships between users,
+            devices, workflows and physical access patterns.
+          </p>
+          <ul>
+            <li>🔹 Cross-domain correlation</li>
+            <li>🔹 Context-aware detection</li>
+            <li>🔹 Multi-stage attack mapping</li>
+          </ul>
+        </div>
+
+        <button class="feature-btn">Learn More</button>
+      </div>
+
+      <!-- FEATURE 3 -->
+      <div class="feature-card">
+        <div class="light-border"></div>
+        <img src="image3.jpg" class="feature-img">
+        <h3>Hybrid Threat Detection</h3>
+        <p>Detect ransomware spread and insider anomalies before disruption.</p>
+
+        <div class="extra-content">
+          <p>
+            Behaviour modelling identifies abnormal privilege usage,
+            unusual shift access, and coordinated cyber-physical attacks.
+          </p>
+          <ul>
+            <li>🔹 Insider misuse detection</li>
+            <li>🔹 Supply-chain risk visibility</li>
+            <li>🔹 Early anomaly alerts</li>
+          </ul>
+        </div>
+
+        <button class="feature-btn">Learn More</button>
+      </div>
+
+      <!-- FEATURE 4 -->
+      <div class="feature-card">
+        <div class="light-border"></div>
+        <img src="image4.jpg" class="feature-img">
+        <h3>Predictive Risk Scoring</h3>
+        <p>Impact-weighted scoring prioritises operational severity.</p>
+
+        <div class="extra-content">
+          <p>
+            Every correlated event is evaluated using business-impact
+            modelling to prevent alert fatigue and prioritise true risk.
+          </p>
+          <ul>
+            <li>🔹 Operational impact scoring</li>
+            <li>🔹 Escalation prioritisation</li>
+            <li>🔹 Severity-weighted alerts</li>
+          </ul>
+        </div>
+
+        <button class="feature-btn">Learn More</button>
+      </div>
+
+      <!-- FEATURE 5 -->
+      <div class="feature-card">
+        <div class="light-border"></div>
+        <img src="image5.jpg" class="feature-img">
+        <h3>Real-Time Intelligent Alerts</h3>
+        <p>Priority-based alerts strengthen operational resilience.</p>
+
+        <div class="extra-content">
+          <p>
+            Alerts are enriched with contextual intelligence and
+            executive-ready summaries for faster response.
+          </p>
+          <ul>
+            <li>🔹 Multi-channel alerting</li>
+            <li>🔹 Reduced triage time</li>
+            <li>🔹 Executive visibility</li>
+          </ul>
+        </div>
+
+        <button class="feature-btn">Learn More</button>
+      </div>
+
+      <!-- FEATURE 6 -->
+      <div class="feature-card">
+        <div class="light-border"></div>
+        <img src="image6.jpg" class="feature-img">
+        <h3>GDPR-Ready Compliance Automation</h3>
+        <p>Automated governance reporting aligned with UK regulation.</p>
+
+        <div class="extra-content">
+          <p>
+            Structured audit logs and compliance dashboards eliminate
+            manual audit preparation overhead.
+          </p>
+          <ul>
+            <li>🔹 Automated audit trails</li>
+            <li>🔹 Governance dashboards</li>
+            <li>🔹 Regulatory reporting exports</li>
+          </ul>
+        </div>
+
+        <button class="feature-btn">Learn More</button>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+/* NAVY VERSION OF DIVIDER */
+
+.faq-divider.navy::before,
+.faq-divider.navy::after{
+  background:rgba(10,25,47,0.6);
+}
+
+.faq-divider.navy .divider-core{
+  background:#0A192F;
+  box-shadow:0 0 15px #0A192F;
+}
+
+.faq-divider.navy .divider-ring{
+  border:1px solid rgba(10,25,47,0.6);
+}
+
+/* LAYOUT */
+
+.founder-layout{
+  display:flex;
+  gap:80px;
+  align-items:flex-start;
+}
+/* ================= SECTION ================= */
+.features-premium{
+  background:#38bdf8;
+  padding:140px 8%;
+  font-family:Arial, sans-serif;
+  position:relative;
+  overflow:hidden;
+}
+
+/* subtle floating light */
+.features-premium::before{
+  content:"";
+  position:absolute;
+  width:500px;
+  height:500px;
+  background:radial-gradient(circle,rgba(255,255,255,0.3),transparent 70%);
+  top:-150px;
+  right:-150px;
+  animation:floatLight 10s infinite alternate ease-in-out;
+}
+
+@keyframes floatLight{
+  from{transform:translateY(-20px);}
+  to{transform:translateY(40px);}
+}
+
+.features-container{
+  max-width:1300px;
+  margin:auto;
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
+
+.section-tag{
+  font-size:12px;
+  letter-spacing:0.3em;
+  color:#0A192F;
+  font-weight:700;
+}
+
+.features-premium h2{
+  font-size:40px;
+  margin-top:15px;
+  color:#ffffff;
+}
+
+.features-premium h2 span{
+  color:#0A192F;
+}
+
+.section-sub{
+  max-width:750px;
+  margin:20px auto 70px;
+  color:#0A192F;
+  line-height:1.7;
+}
+
+/* GRID */
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
+}
+
+/* CARD */
+.feature-card{
+  position:relative;
+  background:#ffffff;
+  border-radius:20px;
+  padding:25px;
+  transition:0.4s ease;
+  overflow:hidden;
+  text-align:left;
+}
+
+/* glowing border */
+.light-border{
+  position:absolute;
+  inset:-2px;
+  border-radius:20px;
+  background:linear-gradient(120deg,#0A192F,transparent,#0A192F);
+  background-size:300% 300%;
+  animation:borderMove 6s linear infinite;
+  z-index:-1;
+}
+
+@keyframes borderMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* image */
+.feature-img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:14px;
+  margin-bottom:20px;
+}
+
+/* text */
+.feature-card h3{
+  font-size:18px;
+  margin-bottom:10px;
+  color:#0A192F;
+}
+
+.feature-card p{
+  font-size:14px;
+  line-height:1.6;
+  color:#334155;
+  margin-bottom:20px;
+}
+
+/* button */
+.feature-btn{
+  padding:8px 18px;
+  border-radius:50px;
+  border:none;
+  background:#0A192F;
+  color:#ffffff;
+  font-size:12px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.feature-btn:hover{
+  background:#38bdf8;
+  color:#0A192F;
+  transform:translateY(-3px);
+}
+
+/* vibration effect */
+.feature-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 25px rgba(10,25,47,0.3);
+}
+
+/* responsive */
+@media(max-width:900px){
+  .features-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+/* Hide extra content */
+.extra-content{
+  max-height:0;
+  overflow:hidden;
+  transition:all 0.4s ease;
+  opacity:0;
+  font-size:14px;
+  color:#334155;
+  margin-bottom:0;
+}
+
+.extra-content ul{
+  padding-left:15px;
+  margin-top:10px;
+}
+
+.feature-card.active .extra-content{
+  max-height:300px;
+  opacity:1;
+  margin-bottom:20px;
+}
+
+.feature-card.active .feature-btn{
+  background:#38bdf8;
+  color:#0A192F;
+}
+/* ================= AUTO POWER BUTTON ================= */
+
+.feature-btn{
+  padding:8px 18px;
+  border-radius:50px;
+  border:none;
+  font-size:12px;
+  cursor:pointer;
+  font-weight:600;
+  animation:powerBlink 2s infinite ease-in-out;
+  transition:0.3s;
+}
+
+/* ON/OFF Animation */
+@keyframes powerBlink{
+
+  0%{
+    background:#000000;   /* OFF */
+    color:#ffffff;
+    box-shadow:none;
   }
 
-  .contact-header p{
-    font-size:15.8px;
+  50%{
+    background:#38bdf8;   /* ON */
+    color:#0A192F;
+    box-shadow:0 0 15px #38bdf8,
+               0 0 30px rgba(56,189,248,0.6);
   }
 
-  .contact-action{
-    padding:30px 22px;
+  100%{
+    background:#000000;   /* OFF */
+    color:#ffffff;
+    box-shadow:none;
   }
 
-  .contact-cta{
-    font-size:15px;
+}
+</style>
+
+<script>
+
+const cards = document.querySelectorAll(".feature-card");
+
+/* Manual Click Still Works */
+cards.forEach(card=>{
+  const btn = card.querySelector(".feature-btn");
+
+  btn.addEventListener("click",()=>{
+    card.classList.toggle("active");
+    btn.textContent = card.classList.contains("active") 
+      ? "Close" 
+      : "Learn More";
+  });
+});
+</script>
+
+<!-- ================= ULTRA PREMIUM NAVY PRICING ================= -->
+<section class="pricing-ultra" id="pricing">
+
+  <div class="pricing-container">
+
+    <div class="pricing-head">
+      <span class="pricing-tag">PRICING PLANS</span>
+      <h2>CyberMesh Guard <span>Flexible Plans</span></h2>
+
+      <!-- ENERGY DIVIDER -->
+      <div class="ultra-divider">
+        <div class="divider-core"></div>
+        <div class="divider-ring ring1"></div>
+        <div class="divider-ring ring2"></div>
+      </div>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- STARTER -->
+      <div class="pricing-card">
+        <div class="border-light"></div>
+        <h3>Starter</h3>
+        <div class="price">£59<span>/site</span></div>
+
+        <ul>
+          <li><span class="tick">✔</span> Secure API Integrations</li>
+          <li><span class="tick">✔</span> Real-Time Risk Alerts</li>
+          <li><span class="tick">✔</span> GDPR Audit Trails</li>
+          <li><span class="tick">✔</span> SME Dashboard</li>
+        </ul>
+
+        <button class="price-btn">Start Now</button>
+      </div>
+
+      <!-- PROFESSIONAL -->
+      <div class="pricing-card popular">
+        <div class="border-light"></div>
+        <div class="badge">Most Popular</div>
+        <h3>Professional</h3>
+        <div class="price">£149<span>/site</span></div>
+
+        <ul>
+          <li><span class="tick">💦</span> Hybrid Threat Detection</li>
+          <li><span class="tick">💦</span> Graph-Based ML Engine</li>
+          <li><span class="tick">💦</span> Compliance Automation</li>
+          <li><span class="tick">💦</span> Multi-Site Monitoring</li>
+        </ul>
+
+        <button class="price-btn">Get Started</button>
+      </div>
+
+      <!-- ENTERPRISE -->
+      <div class="pricing-card">
+        <div class="border-light"></div>
+        <h3>Enterprise</h3>
+        <div class="price">Custom</div>
+
+        <ul>
+          <li><span class="tick">✔</span> Unlimited Integrations</li>
+          <li><span class="tick">✔</span> Dedicated Support</li>
+          <li><span class="tick">✔</span> Advanced AI Analytics</li>
+          <li><span class="tick">✔</span> Priority SLA</li>
+        </ul>
+
+        <button class="price-btn">Contact Sales</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+
+/* SECTION */
+.pricing-ultra{
+  background:#0A192F;
+  padding:150px 8%;
+  font-family:Arial, sans-serif;
+  position:relative;
+  overflow:hidden;
+}
+
+/* animated grid background */
+.pricing-ultra::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(56,189,248,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56,189,248,0.05) 1px, transparent 1px);
+  background-size:70px 70px;
+  opacity:0.4;
+}
+
+/* container */
+.pricing-container{
+  max-width:1200px;
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+/* HEADER */
+.pricing-head{
+  text-align:center;
+  margin-bottom:100px;
+}
+
+.pricing-tag{
+  font-size:12px;
+  letter-spacing:0.3em;
+  color:#38bdf8;
+}
+
+.pricing-head h2{
+  font-size:42px;
+  color:#ffffff;
+  margin-top:15px;
+}
+
+.pricing-head span{
+  color:#38bdf8;
+}
+
+/* ENERGY DIVIDER */
+.ultra-divider{
+  position:relative;
+  width:200px;
+  height:60px;
+  margin:40px auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.ultra-divider::before,
+.ultra-divider::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  width:70px;
+  height:1px;
+  background:rgba(56,189,248,0.5);
+}
+
+.ultra-divider::before{ left:0; }
+.ultra-divider::after{ right:0; }
+
+.divider-core{
+  width:14px;
+  height:14px;
+  background:#38bdf8;
+  transform:rotate(45deg);
+  box-shadow:0 0 20px #38bdf8;
+  z-index:2;
+}
+
+.divider-ring{
+  position:absolute;
+  width:30px;
+  height:30px;
+  border:1px solid rgba(56,189,248,0.6);
+  border-radius:50%;
+  animation:pulseRing 3s infinite;
+}
+
+.ring2{ animation-delay:1.5s; }
+
+@keyframes pulseRing{
+  0%{transform:scale(0.6);opacity:0.8;}
+  100%{transform:scale(1.8);opacity:0;}
+}
+
+/* GRID */
+.pricing-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:50px;
+}
+
+/* CARD */
+.pricing-card{
+  background:#12233f;
+  padding:50px 35px;
+  border-radius:25px;
+  color:#ffffff;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  transition:0.4s ease;
+  border:1px solid rgba(56,189,248,0.3);
+}
+
+/* moving border light */
+.border-light{
+  position:absolute;
+  inset:-2px;
+  border-radius:25px;
+  border:2px solid transparent;
+  background:linear-gradient(120deg,#38bdf8,transparent,#38bdf8);
+  background-size:300% 300%;
+  animation:borderMove 2s linear infinite;
+  z-index:-1;
+}
+
+@keyframes borderMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* hover depth */
+.pricing-card:hover{
+  transform:translateY(-12px) scale(1.02);
+  box-shadow:0 40px 80px rgba(56,189,248,0.2);
+}
+
+/* POPULAR */
+.popular{
+  border:2px solid #38bdf8;
+  box-shadow:0 0 40px rgba(56,189,248,0.3);
+}
+
+.badge{
+  position:absolute;
+  top:20px;
+  right:-40px;
+  background:#38bdf8;
+  color:#0A192F;
+  padding:6px 50px;
+  transform:rotate(45deg);
+  font-size:12px;
+  font-weight:bold;
+}
+
+/* TEXT */
+.price{
+  font-size:36px;
+  margin:20px 0;
+  font-weight:bold;
+}
+
+.price span{
+  font-size:16px;
+  color:#38bdf8;
+}
+
+.pricing-card ul{
+  list-style:none;
+  padding:0;
+  margin:30px 0;
+  text-align:left;
+}
+
+.pricing-card ul li{
+  margin:14px 0;
+  font-size:14px;
+  color:#cbd5e1;
+  display:flex;
+  align-items:center;
+}
+
+.tick{
+  color:#38bdf8;
+  margin-right:10px;
+  font-weight:bold;
+}
+
+/* BUTTON */
+.price-btn{
+  padding:14px 30px;
+  border:none;
+  border-radius:40px;
+  background:#38bdf8;
+  color:#0A192F;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+  position:relative;
+  overflow:hidden;
+  animation:vibrate 2.5s infinite;
+}
+
+/* subtle vibration */
+@keyframes vibrate{
+  0%,100%{transform:translateX(0);}
+  50%{transform:translateX(1px);}
+}
+
+/* shine sweep */
+.price-btn::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,#ffffff,transparent);
+  opacity:0.4;
+  transition:0.6s;
+}
+
+.price-btn:hover::before{
+  left:100%;
+}
+
+.price-btn:hover{
+  background:#ffffff;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .pricing-head h2{
+    font-size:28px;
+  }
+}
+
+</style>
+
+<script>
+document.querySelectorAll(".price-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    btn.style.transform="scale(0.95)";
+    setTimeout(()=>{btn.style.transform="scale(1)";},150);
+  });
+});
+</script>
+<!-- ================= FOUNDER SECTION ================= -->
+
+<section class="founder-section" id="founder">
+
+  <div class="founder-container">
+<div class="side-accent-right"></div>
+<div class="floating-shape"></div>
+    <div class="founder-head">
+      <span class="founder-tag">FOUNDER</span>
+      <h2>Vision Behind <span>CyberMesh Guard</span></h2>
+
+      <!-- SAME ENERGY DIVIDER (NAVY VERSION) -->
+      <div class="faq-divider navy">
+        <div class="divider-core"></div>
+        <div class="divider-ring ring1"></div>
+        <div class="divider-ring ring2"></div>
+      </div>
+    </div>
+
+    <div class="founder-layout">
+
+      <div class="founder-left">
+        <h3>Moin Ahmed</h3>
+        <div class="title-line"></div>
+
+        <p>
+          Founder of CyberMesh Guard, focused on building predictive
+          cyber-physical intelligence for UK operational SMEs.
+        </p>
+      </div>
+
+      <div class="founder-right">
+
+        <p>
+          CyberMesh Guard was created to solve a growing problem in UK logistics
+          and warehouse environments the disconnect between cybersecurity,
+          operational workflows, and physical access systems.
+        </p>
+
+        <p>
+          The platform integrates existing SME systems such as ticketing tools,
+          access control logs, and operational telemetry into a unified risk
+          intelligence mesh — without requiring new hardware.
+        </p>
+
+        <p>
+          The vision is simple: deliver enterprise-grade predictive protection
+          at SME-friendly pricing, enabling operational businesses to prevent
+          hybrid threats before disruption occurs.
+        </p>
+
+        <div class="founder-highlights">
+          <span>Predictive Hybrid Risk Intelligence</span>
+          <span>SME-Focused Architecture</span>
+          <span>Graph-Based Threat Modelling</span>
+          <span>UK Compliance Ready Framework</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+/* Improve paragraph structure spacing */
+
+.founder-right p{
+  position:relative;
+  padding-left:20px;
+}
+
+/* Add subtle vertical accent line beside paragraphs */
+
+.founder-right p::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:8px;
+  width:4px;
+  height:70%;
+  background:#0A192F;
+  opacity:0.3;
+  border-radius:10px;
+}
+
+/* Website typography enhancement */
+
+.founder-right p:first-child{
+  font-weight:600;
+  font-size:17px;
+}
+
+/* Add soft hover depth to founder name */
+
+.founder-left h3{
+  transition:0.4s;
+}
+
+.founder-left h3:hover{
+  letter-spacing:2px;
+  transform:translateY(-3px);
+}
+
+/* Elegant underline animation */
+
+.title-line{
+  position:relative;
+  overflow:hidden;
+}
+
+.title-line::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,#38bdf8,transparent);
+  animation:titleSweep 4s linear infinite;
+}
+
+@keyframes titleSweep{
+  0%{left:-100%;}
+  100%{left:100%;}
+}
+
+
+/* Highlight badges improved */
+
+.founder-highlights span{
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(5px);
+}
+
+/* Add smooth appearance animation */
+
+.founder-layout{
+  animation:fadeUp 1.2s ease forwards;
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+/* ================= SECTION ================= */
+
+.founder-section{
+  background:#38bdf8;
+  padding:140px 8%;
+  font-family:Arial, sans-serif;
+  position:relative;
+  overflow:hidden;
+}
+
+/* soft animated background light */
+.founder-section::before{
+  content:"";
+  position:absolute;
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle,#0A192F 0%, transparent 70%);
+  opacity:0.08;
+  top:-200px;
+  right:-150px;
+  animation:floatBg 10s infinite alternate ease-in-out;
+}
+
+@keyframes floatBg{
+  from{transform:translateY(-20px);}
+  to{transform:translateY(40px);}
+}
+
+/* CONTAINER */
+
+.founder-container{
+  max-width:1200px;
+  margin:auto;
+  position:relative;
+  z-index:2;
+}
+
+/* HEADER */
+
+.founder-head{
+  text-align:center;
+  margin-bottom:100px;
+}
+
+.founder-tag{
+  font-size:12px;
+  letter-spacing:0.3em;
+  color:#0A192F;
+  font-weight:700;
+}
+
+.founder-head h2{
+  font-size:40px;
+  color:#0A192F;
+  margin-top:15px;
+}
+
+.founder-head span{
+  color:#ffffff;
+}
+
+/* NAVY VERSION OF DIVIDER */
+
+.faq-divider.navy::before,
+.faq-divider.navy::after{
+  background:rgba(10,25,47,0.6);
+}
+
+.faq-divider.navy .divider-core{
+  background:#0A192F;
+  box-shadow:0 0 15px #0A192F;
+}
+
+.faq-divider.navy .divider-ring{
+  border:1px solid rgba(10,25,47,0.6);
+}
+
+/* LAYOUT */
+
+.founder-layout{
+  display:flex;
+  gap:80px;
+  align-items:flex-start;
+}
+
+/* LEFT SIDE */
+
+.founder-left{
+  flex:0.8;
+}
+
+.founder-left h3{
+  font-size:28px;
+  color:#0A192F;
+}
+
+.title-line{
+  width:80px;
+  height:3px;
+  background:#0A192F;
+  margin:15px 0 25px;
+  border-radius:10px;
+}
+
+.founder-left p{
+  color:#0A192F;
+  font-size:16px;
+  line-height:1.7;
+}
+
+/* RIGHT SIDE */
+
+.founder-right{
+  flex:1.2;
+}
+
+.founder-right p{
+  font-size:16px;
+  line-height:1.8;
+  color:#0A192F;
+  margin-bottom:25px;
+}
+
+/* Highlights row */
+
+.founder-highlights{
+  display:flex;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-top:30px;
+}
+
+.founder-highlights span{
+  padding:10px 18px;
+  border:1px solid #0A192F;
+  border-radius:50px;
+  font-size:13px;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.founder-highlights span:hover{
+  background:#0A192F;
+  color:#38bdf8;
+  transform:translateY(-4px);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+  .founder-layout{
+    flex-direction:column;
+    gap:50px;
+  }
+
+  .founder-head h2{
+    font-size:28px;
+  }
+
+}
+/* ===== GLOBAL PREMIUM EFFECTS ===== */
+
+body{
+  background:#0A192F;
+  margin:0;
+  padding:0;
+  overflow-x:hidden;
+}
+
+/* Animated background particles */
+body::before{
+  content:"";
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(56,189,248,0.08), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(56,189,248,0.06), transparent 40%);
+  z-index:-2;
+  animation:moveBg 12s linear infinite alternate;
+}
+
+@keyframes moveBg{
+  0%{transform:translateY(0px);}
+  100%{transform:translateY(-40px);}
+}
+
+/* Section spacing consistency */
+section{
+  position:relative;
+  z-index:2;
+}
+
+</style>
+
+<!-- ================= ULTRA PREMIUM FAQ V2 ================= -->
+<section class="faq-ultra" id="faq">
+
+  <div class="faq-container">
+
+    <div class="faq-head">
+      <span class="faq-tag">FREQUENTLY ASKED QUESTIONS</span>
+      <h2>CyberMesh Guard <span>Platform Insights</span></h2>
+     <div class="faq-divider">
+  <div class="divider-core"></div>
+  <div class="divider-ring ring1"></div>
+  <div class="divider-ring ring2"></div>
+</div>
+
+    <div class="faq-grid">
+
+      <!-- FAQ ITEM -->
+      <!-- Repeatable structure -->
+
+      <div class="faq-box">
+        <div class="faq-top">
+          <div class="faq-number">01</div>
+          <div class="faq-title">What makes CyberMesh Guard different?</div>
+          <div class="faq-icon">💧</div>
+        </div>
+        <div class="faq-content">
+          Unlike traditional security tools, CyberMesh Guard correlates
+          cyber, operational and workflow systems into one predictive mesh layer.
+        </div>
+      </div>
+
+      <div class="faq-box">
+        <div class="faq-top">
+          <div class="faq-number">02</div>
+          <div class="faq-title">Do we need new hardware?</div>
+          <div class="faq-icon">💧</div>
+        </div>
+        <div class="faq-content">
+          No. The platform integrates directly with your existing SME systems
+          via secure API connections.
+        </div>
+      </div>
+
+      <div class="faq-box">
+        <div class="faq-top">
+          <div class="faq-number">03</div>
+          <div class="faq-title">Is it GDPR compliant?</div>
+          <div class="faq-icon">💧</div>
+        </div>
+        <div class="faq-content">
+          Yes. Automated audit trails and compliance reporting are built in
+          for UK regulatory readiness.
+        </div>
+      </div>
+
+      <div class="faq-box">
+        <div class="faq-top">
+          <div class="faq-number">04</div>
+          <div class="faq-title">Can it detect hybrid threats?</div>
+          <div class="faq-icon">💧</div>
+        </div>
+        <div class="faq-content">
+          Graph-based ML models detect correlations between physical
+          and digital behaviour before disruption occurs.
+        </div>
+      </div>
+
+      <div class="faq-box">
+        <div class="faq-top">
+          <div class="faq-number">05</div>
+          <div class="faq-title">How fast is deployment?</div>
+          <div class="faq-icon">💧</div>
+        </div>
+        <div class="faq-content">
+          Most SME environments integrate within days using secure
+          cloud-based API onboarding.
+        </div>
+      </div>
+
+      <div class="faq-box">
+        <div class="faq-top">
+          <div class="faq-number">06</div>
+          <div class="faq-title">Multi-site compatibility?</div>
+          <div class="faq-icon">💧</div>
+        </div>
+        <div class="faq-content">
+          Multi-site dashboards allow centralized visibility across
+          warehouses and logistics hubs.
+        </div>
+      </div>
+
+      <div class="faq-box">
+        <div class="faq-top">
+          <div class="faq-number">07</div>
+          <div class="faq-title">How does pricing work?</div>
+          <div class="faq-icon">💧</div>
+        </div>
+        <div class="faq-content">
+          Subscription-based pricing per site — designed for UK SME affordability.
+        </div>
+      </div>
+
+      <div class="faq-box">
+        <div class="faq-top">
+          <div class="faq-number">08</div>
+          <div class="faq-title">Can we run a pilot first?</div>
+          <div class="faq-icon">💧</div>
+        </div>
+        <div class="faq-content">
+          Structured pilot programs validate ROI and predictive accuracy
+          before full rollout.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* ================= ENERGY CORE DIVIDER ================= */
+
+.faq-divider{
+  position:relative;
+  width:200px;
+  height:60px;
+  margin:35px auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* side thin lines */
+.faq-divider::before,
+.faq-divider::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  width:60px;
+  height:1px;
+  background:rgba(56,189,248,0.5);
+}
+
+.faq-divider::before{ left:0; }
+.faq-divider::after{ right:0; }
+
+/* center diamond core */
+.divider-core{
+  width:14px;
+  height:14px;
+  background:#38bdf8;
+  transform:rotate(45deg);
+  box-shadow:0 0 15px #38bdf8;
+  z-index:2;
+}
+
+/* pulse rings */
+.divider-ring{
+  position:absolute;
+  width:30px;
+  height:30px;
+  border:1px solid rgba(56,189,248,0.5);
+  border-radius:50%;
+  animation:pulseRing 3s infinite;
+}
+
+.ring2{
+  animation-delay:1.5s;
+}
+
+@keyframes pulseRing{
+  0%{
+    transform:scale(0.6);
+    opacity:0.8;
+  }
+  100%{
+    transform:scale(1.8);
+    opacity:0;
+  }
+}
+/* SECTION */
+.faq-ultra{
+  background:#0A192F;
+  padding:140px 8%;
+  font-family:Arial, sans-serif;
+  position:relative;
+  overflow:hidden;
+}
+
+/* subtle animated background glow */
+.faq-ultra::before{
+  content:"";
+  position:absolute;
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle,#38bdf8,transparent 70%);
+  opacity:0.05;
+  top:-200px;
+  right:-150px;
+  animation:floatBg 12s infinite alternate ease-in-out;
+}
+
+@keyframes floatBg{
+  from{transform:translateY(-20px);}
+  to{transform:translateY(40px);}
+}
+
+/* HEADER */
+.faq-head{
+  text-align:center;
+  margin-bottom:90px;
+}
+
+.faq-tag{
+  font-size:12px;
+  letter-spacing:0.3em;
+  color:#38bdf8;
+}
+
+.faq-head h2{
+  font-size:40px;
+  color:#ffffff;
+  margin-top:15px;
+}
+
+.faq-head span{
+  color:#38bdf8;
+}
+
+
+
+/* GRID */
+.faq-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+}
+
+/* BOX */
+.faq-box{
+  background:#12233f;
+  padding:28px;
+  border-radius:20px;
+  border:1px solid rgba(56,189,248,0.4);
+  transition:0.4s;
+  cursor:pointer;
+}
+
+.faq-box:hover{
+  transform:translateY(-8px);
+  box-shadow:0 25px 60px rgba(56,189,248,0.25);
+}
+
+/* TOP */
+.faq-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.faq-number{
+  color:#38bdf8;
+  font-weight:700;
+}
+
+.faq-title{
+  flex:1;
+  margin:0 15px;
+  color:#ffffff;
+  font-weight:600;
+}
+
+/* ICON CLICK MOVEMENT */
+.faq-icon{
+  font-size:22px;
+  animation:bounceIcon 1.5s infinite;
+}
+
+@keyframes bounceIcon{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-6px);}
+}
+
+/* CONTENT */
+.faq-content{
+  margin-top:18px;
+  color:#94a3b8;
+  line-height:1.7;
+  max-height:0;
+  overflow:hidden;
+  transition:0.4s ease;
+}
+
+/* ACTIVE */
+.faq-box.active .faq-content{
+  max-height:200px;
+}
+
+.faq-box.active .faq-icon{
+  animation:none;
+  transform:rotate(180deg);
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .faq-grid{
+    grid-template-columns:1fr;
+  }
+  .faq-head h2{
+    font-size:28px;
+  }
+}
+
+</style>
+
+<script>
+document.querySelectorAll(".faq-box").forEach(box=>{
+  box.addEventListener("click",()=>{
+    box.classList.toggle("active");
+  });
+});
+</script>
+<!-- ================= ULTRA MODERN CONTACT SECTION ================= -->
+<section class="contact-neo" id="contact">
+
+  <div class="neo-container">
+
+    <div class="neo-left">
+
+      <span class="neo-tag">CONNECT WITH CYBERMESH GUARD</span>
+
+      <h2>
+        Strengthen Your <br>
+        <span>Cyber-Physical Security</span>
+      </h2>
+
+      <div class="neo-divider"></div>
+
+      <p>
+        Designed for UK warehouses and operational SMEs.
+        Predict. Detect. Prevent hybrid operational risk
+        before disruption happens.
+      </p>
+
+    </div>
+
+    <div class="neo-right">
+
+      <div class="neo-card">
+
+        <div class="border-animate"></div>
+
+        <h3>Book Strategic Demo</h3>
+
+        <p>
+          Explore how our graph-based intelligence engine
+          protects your operational infrastructure in real time.
+        </p>
+
+        <button id="neoBtn">
+          Request Demo →
+        </button>
+
+        <div class="neo-small">
+          UK Infrastructure • GDPR Ready • Confidential
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+
+/* ================= BASE SECTION ================= */
+
+.contact-neo{
+  background:#38bdf8;
+  padding:140px 8%;
+  font-family:Arial, sans-serif;
+  position:relative;
+  overflow:hidden;
+}
+
+/* floating shapes */
+
+.contact-neo::before{
+  content:"";
+  position:absolute;
+  width:500px;
+  height:500px;
+  background:radial-gradient(circle,#ffffff,transparent 70%);
+  opacity:0.08;
+  top:-200px;
+  left:-150px;
+  animation:floatGlow 12s infinite alternate ease-in-out;
+}
+
+@keyframes floatGlow{
+  from{ transform:translateY(-20px); }
+  to{ transform:translateY(40px); }
+}
+
+.neo-container{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:80px;
+  position:relative;
+  z-index:2;
+  
+}
+
+/* ================= LEFT SIDE ================= */
+
+.neo-left{
+  flex:1;
+  color:#ffffff;
+}
+
+.neo-tag{
+  font-size:12px;
+  letter-spacing:0.3em;
+  opacity:0.9;
+}
+
+.neo-left h2{
+  font-size:42px;
+  font-weight:800;
+  margin:20px 0;
+}
+
+.neo-left h2 span{
+  color:#0A192F;
+  background:#ffffff;
+  padding:4px 12px;
+  border-radius:8px;
+}
+
+.neo-divider{
+  width:80px;
+  height:4px;
+  background:#0A192F;
+  margin:20px 0;
+  border-radius:10px;
+  animation:pulseLine 3s infinite;
+}
+
+@keyframes pulseLine{
+  0%{ width:60px; }
+  50%{ width:120px; }
+  100%{ width:60px; }
+}
+
+.neo-left p{
+  font-size:16px;
+  line-height:1.8;
+  max-width:500px;
+  opacity:0.95;
+}
+
+/* ================= RIGHT CARD ================= */
+
+.neo-right{
+  flex:1;
+  display:flex;
+  justify-content:center;
+}
+
+.neo-card{
+  position:relative;
+  background:#ffffff;
+  padding:70px 50px;
+  border-radius:30px;
+  box-shadow:0 40px 80px rgba(0,0,0,0.15);
+  width:100%;
+  max-width:450px;
+  text-align:center;
+  overflow:hidden;
+  transition:0.4s ease;
+}
+
+.neo-card:hover{
+  transform:translateY(-10px);
+}
+
+/* animated border */
+
+.border-animate{
+  position:absolute;
+  inset:0;
+  border-radius:30px;
+  padding:3px;
+  background:linear-gradient(120deg,#38bdf8,#0A192F,#38bdf8);
+  background-size:300% 300%;
+  animation:borderRun 6s linear infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+@keyframes borderRun{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.neo-card h3{
+  font-size:24px;
+  color:#0A192F;
+  margin-bottom:20px;
+  position:relative;
+  z-index:2;
+}
+
+.neo-card p{
+  font-size:15px;
+  color:#475569;
+  margin-bottom:35px;
+  position:relative;
+  z-index:2;
+}
+/* ================= PREMIUM BUTTON BORDER MODEL ================= */
+
+#neoBtn{
+  padding:18px 45px;
+  background:#0A192F;
+  color:#ffffff;
+  font-weight:700;
+  border:3px solid #000000;          /* Black outer border */
+  border-radius:60px;
+  cursor:pointer;
+  position:relative;
+  transition:0.3s ease;
+  overflow:hidden;
+}
+
+/* Inner Blue Border Effect */
+#neoBtn::after{
+  content:"";
+  position:absolute;
+  inset:4px;
+  border-radius:60px;
+  border:2px solid #38bdf8;          /* Blue inner border */
+  pointer-events:none;
+  animation:borderGlow 3s infinite alternate ease-in-out;
+}
+
+/* Glow animation */
+@keyframes borderGlow{
+  0%{ box-shadow:0 0 5px #38bdf8; }
+  50%{ box-shadow:0 0 20px #38bdf8; }
+  100%{ box-shadow:0 0 5px #38bdf8; }
+}
+
+/* Hover effect */
+#neoBtn:hover{
+  background:#ffffff;
+  color:#0A192F;
+  transform:translateY(-4px);
+  box-shadow:0 15px 40px rgba(0,0,0,0.3);
+}
+/* ================= BUTTON ================= */
+
+#neoBtn{
+  padding:18px 45px;
+  background:#0A192F;
+  color:#ffffff;
+  border:none;
+  border-radius:60px;
+  font-weight:700;
+  cursor:pointer;
+  transition:0.3s ease;
+  position:relative;
+  z-index:2;
+  overflow:hidden;
+  animation:btnPulse 2.5s infinite;
+}
+
+@keyframes btnPulse{
+  0%{ transform:scale(1); }
+  50%{ transform:scale(1.05); }
+  100%{ transform:scale(1); }
+}
+
+#neoBtn:hover{
+  background:#38bdf8;
+  color:#0A192F;
+  box-shadow:0 15px 40px rgba(56,189,248,0.6);
+}
+
+/* light sweep */
+
+#neoBtn::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,#ffffff,transparent);
+  opacity:0.3;
+  transition:0.6s;
+}
+
+#neoBtn:hover::before{
+  left:100%;
+}
+
+.neo-small{
+  margin-top:20px;
+  font-size:12px;
+  color:#64748b;
+  position:relative;
+  z-index:2;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+  .neo-container{
+    flex-direction:column;
+    text-align:center;
+  }
+  .neo-left h2{
+    font-size:30px;
+  }
+}
+/* ================= EXTRA DEPTH LAYER ================= */
+
+.contact-neo{
+  position:relative;
+}
+
+/* subtle cyber grid pattern */
+
+.contact-neo::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size:60px 60px;
+  opacity:0.4;
+  z-index:1;
+}
+
+/* ensure content above grid */
+.neo-container{
+  position:relative;
+  z-index:3;
+}
+
+/* ================= CARD PREMIUM DEPTH ================= */
+
+.neo-card{
+  backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,0.4);
+}
+
+/* inner glow */
+
+.neo-card::before{
+  content:"";
+  position:absolute;
+  width:250px;
+  height:250px;
+  background:radial-gradient(circle,#38bdf8 0%,transparent 70%);
+  opacity:0.15;
+  top:-100px;
+  right:-100px;
+  animation:cardFloat 10s infinite alternate ease-in-out;
+}
+
+@keyframes cardFloat{
+  from{ transform:translate(0,0); }
+  to{ transform:translate(-40px,40px); }
+}
+
+/* ================= LEFT SIDE POWER TEXT EFFECT ================= */
+
+.neo-left h2{
+  position:relative;
+}
+
+/* animated underline */
+
+.neo-left h2::after{
+  content:"";
+  position:absolute;
+  bottom:-10px;
+  left:0;
+  height:3px;
+  width:80px;
+  background:#ffffff;
+  border-radius:5px;
+  animation:underlineMove 4s infinite ease-in-out;
+}
+
+@keyframes underlineMove{
+  0%{ width:60px; }
+  50%{ width:140px; }
+  100%{ width:60px; }
+}
+
+/* ================= TAG BADGE ENHANCEMENT ================= */
+
+.neo-tag{
+  background:rgba(255,255,255,0.2);
+  padding:8px 18px;
+  border-radius:50px;
+  display:inline-block;
+  backdrop-filter:blur(4px);
+  border:1px solid rgba(255,255,255,0.4);
+}
+
+/* ================= BUTTON STRONGER EFFECT ================= */
+
+#neoBtn{
+  box-shadow:0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* stronger glow when hover */
+
+#neoBtn:hover{
+  box-shadow:0 20px 50px rgba(0,0,0,0.35);
+}
+
+/* ================= FLOATING SIDE LIGHT ================= */
+
+.contact-neo .side-light{
+  position:absolute;
+  width:300px;
+  height:300px;
+  background:radial-gradient(circle,#ffffff,transparent 70%);
+  opacity:0.05;
+  bottom:-120px;
+  right:-120px;
+  animation:sideMove 12s infinite alternate ease-in-out;
+  z-index:0;
+}
+
+@keyframes sideMove{
+  from{ transform:translateY(0); }
+  to{ transform:translateY(-50px); }
+}
+
+/* ================= CARD SOFT HOVER SHINE ================= */
+
+.neo-card:hover{
+  box-shadow:
+    0 40px 80px rgba(0,0,0,0.2),
+    0 0 40px rgba(56,189,248,0.3);
+}
+
+/* ================= SMALL TEXT REFINEMENT ================= */
+
+.neo-small{
+  letter-spacing:0.05em;
+  opacity:0.8;
+}
+
+/* ================= RESPONSIVE IMPROVEMENT ================= */
+
+@media(max-width:900px){
+  .neo-left h2::after{
+    left:50%;
+    transform:translateX(-50%);
   }
 }
 </style>
 
 <script>
-/* smooth reveal */
-const contactBlock = document.querySelector('.contact-shell');
-contactBlock.style.opacity = 0;
-contactBlock.style.transform = 'translateY(30px)';
-contactBlock.style.transition = '0.8s ease';
 
-window.addEventListener('scroll',()=>{
-  if(contactBlock.getBoundingClientRect().top < window.innerHeight - 140){
-    contactBlock.style.opacity = 1;
-    contactBlock.style.transform = 'translateY(0)';
-  }
+document.getElementById("neoBtn").addEventListener("click", function(){
+
+  const subject = "CyberMesh Guard – Strategic Demo Request";
+  const body = "Hello CyberMesh Guard Team,%0A%0AWe would like to request a strategic demo for our UK operational site.%0A%0ACompany Name:%0ALocation:%0AContact Number:%0A%0ARegards,";
+
+  window.location.href =
+    "mailto:info@cybermeshguard.co.uk?subject=" +
+    encodeURIComponent(subject) +
+    "&body=" + body;
+
 });
+
 </script>
-<!-- ================= MINIMAL ENTERPRISE FOOTER ================= -->
-<footer class="footer-clean">
+<!-- ================= ULTRA PREMIUM CYBER FOOTER ================= -->
 
-  <div class="footer-inner">
+<footer class="ultra-footer">
 
-   <!-- BRAND ROW -->
-<div class="footer-brand">
-  <h2>
-    <span class="brand-primary">CyberMesh</span>
-    <span class="brand-accent">Guard</span>
-  </h2>
+  <div class="footer-container">
 
-  <p>
-    A predictive cyber-physical risk intelligence platform
-    designed to protect operational SMEs from invisible
-    threats before disruption occurs.
-  </p>
-</div>
+    <!-- LOGO BLOCK -->
+    <div class="footer-brand">
 
-<!-- STATEMENT ROW -->
-<div class="footer-statement">
-  <p>
-    Built for UK organisations operating in complex,
-    interconnected environments where cyber risk,
-    operational activity, and third-party exposure intersect
-    delivering <strong>early visibility</strong>,
-    <strong>actionable intelligence</strong>,
-    and <strong>controlled response</strong>
-    without added hardware or complexity.
-  </p>
-</div>
+      <div class="logo-box">
+        <div class="logo-core"></div>
+        <div class="logo-ring"></div>
+      </div>
+
+      <div class="brand-text">
+        <span class="brand-name">CyberMesh Guard</span>
+        <span class="brand-sub">🇬🇧 UK Cyber Intelligence Platform</span>
+      </div>
+
+    </div>
+
+    <!-- CENTER STATUS -->
+    <div class="footer-center">
+      <span class="live-indicator"></span>
+      <span class="center-text">Secure UK Cloud Infrastructure Active</span>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="footer-copy">
+      © 2026 All Rights Reserved
+    </div>
 
   </div>
-<!-- CYAN SEPARATOR -->
-<div class="footer-separator"></div>
 
-<!-- BOTTOM BAR -->
-<div class="footer-bottom footer-cyan">
-  <span>© 2026 CyberMesh Guard</span>
-  <span class="dot">•</span>
-  <span>Confidential Intelligence Platform</span>
-  <span class="dot">•</span>
-  <span>United Kingdom</span>
-</div>
 </footer>
 
 <style>
-:root{
-  --navy:#0b3c5d;
-  --cyan:#18a4a6;
-  --white:#ffffff;
-  --text:#475569;
+
+/* ================= BASE ================= */
+
+.ultra-footer{
+background:#0b1220;
+padding:18px 6%;
+font-size:12px;
+color:#94a3b8;
+position:relative;
+overflow:hidden;
+border-top:1px solid rgba(56,189,248,0.4);
 }
 
-/* FOOTER BASE */
-.footer-clean{
-  background:var(--white);
-  padding:96px 8% 0;
-  font-family:Arial, Helvetica, sans-serif;
+/* Moving Neon Line */
+.ultra-footer::before{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:200%;
+height:2px;
+background:linear-gradient(90deg,transparent,#38bdf8,transparent);
+animation:neonMove 6s linear infinite;
 }
 
-/* INNER */
-.footer-inner{
-  max-width:1100px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:80px;
-  align-items:center;
-}
-/* CYAN BACKGROUND BOTTOM STRIP */
-.footer-cyan{
-  background:var(--cyan);
-  color:#ffffff;
-  padding:12px 8% 26px;
-  text-align:center;
-  font-size:13px;
-  letter-spacing:0.4px;
+@keyframes neonMove{
+0%{left:-100%;}
+100%{left:100%;}
 }
 
-/* DOT STYLE */
-.footer-cyan .dot{
-  margin:0 10px;
-  color:#ffffff;
-  opacity:0.8;
-}
-/* BRAND */
-.footer-brand h2{
-  font-size:32px;
-  font-weight:900;
-  letter-spacing:0.6px;
-}
-
-.brand-primary{
-  color:var(--navy);
+/* Subtle Cyber Grid */
+.ultra-footer::after{
+content:"";
+position:absolute;
+inset:0;
+background-image:
+linear-gradient(rgba(56,189,248,0.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(56,189,248,0.05) 1px, transparent 1px);
+background-size:40px 40px;
+opacity:0.3;
+pointer-events:none;
 }
 
-.brand-accent{
-  color:var(--cyan);
-  margin-left:6px;
+/* Layout */
+.footer-container{
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:15px;
+position:relative;
+z-index:2;
 }
 
-.footer-brand p{
-  margin-top:16px;
-  font-size:17px;
-  line-height:1.75;
-  color:var(--text);
-  max-width:460px;
+/* ================= LOGO ================= */
+
+.footer-brand{
+display:flex;
+align-items:center;
+gap:12px;
 }
 
-/* STATEMENT */
-.footer-statement p{
-  font-size:18px;
-  line-height:1.8;
-  color:var(--text);
+/* Logo Box */
+.logo-box{
+position:relative;
+width:30px;
+height:30px;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
-.footer-statement strong{
-  color:var(--navy);
-  font-weight:700;
+/* Core */
+.logo-core{
+width:14px;
+height:14px;
+background:#38bdf8;
+border-radius:50%;
+box-shadow:0 0 15px #38bdf8;
+animation:corePulse 3s infinite;
 }
 
-/* CYAN LINE */
-.footer-separator{
-  margin-top:80px;
-  height:5px;
-  background:linear-gradient(
-    90deg,
-    transparent,
-    var(--navy),
-    transparent
-  );
+@keyframes corePulse{
+0%{box-shadow:0 0 8px #38bdf8;}
+50%{box-shadow:0 0 18px #38bdf8;}
+100%{box-shadow:0 0 8px #38bdf8;}
 }
 
-/* BOTTOM BAR */
-.footer-bottom{
-  margin-top:18px;
-  padding:22px 8% 26px;
-  text-align:center;
-  font-size:13px;
-  letter-spacing:0.4px;
-  color:var(--navy);
+/* Rotating Ring */
+.logo-ring{
+position:absolute;
+width:30px;
+height:30px;
+border:2px solid rgba(56,189,248,0.5);
+border-radius:50%;
+animation:rotateRing 8s linear infinite;
 }
 
-.footer-bottom .dot{
-  margin:0 10px;
-  color:var(--navy);
+@keyframes rotateRing{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
 }
 
-/* =========================
-   FOOTER – MOBILE PRO MODE
-   ========================= */
-@media (max-width:900px){
-
-  .footer-inner{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:56px;
-    text-align:center;
-    padding:64px 6% 72px;
-  }
-
-  /* BRAND BLOCK */
-  .footer-brand h2{
-    font-size:26px;
-    line-height:1.15;
-    margin-bottom:14px;
-  }
-
-  .footer-brand p{
-    max-width:520px;
-    margin:0 auto;
-    font-size:15.5px;
-    line-height:1.75;
-    opacity:0.9;
-  }
-
-  /* STATEMENT BLOCK */
-  .footer-statement{
-    position:relative;
-    padding-top:34px;
-  }
-
-  /* soft divider line */
-  .footer-statement::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:50%;
-    transform:translateX(-50%);
-    width:90px;
-    height:2px;
-    background:linear-gradient(
-      90deg,
-      transparent,
-      var(--cyan),
-      transparent
-    );
-  }
-
-  .footer-statement p{
-    max-width:600px;
-    margin:0 auto;
-    font-size:15px;
-    line-height:1.8;
-    opacity:0.9;
-  }
-
-  .footer-statement strong{
-    color:var(--cyan);
-    font-weight:600;
-  }
+/* Text */
+.brand-text{
+display:flex;
+flex-direction:column;
 }
 
-/* =========================
-   SMALL MOBILE (EXTRA CARE)
-   ========================= */
-@media (max-width:480px){
-
-  .footer-inner{
-    padding:56px 7% 64px;
-    gap:44px;
-  }
-
-  .footer-brand h2{
-    font-size:24px;
-  }
-
-  .footer-brand p,
-  .footer-statement p{
-    font-size:14.5px;
-  }
+.brand-name{
+color:#38bdf8;
+font-weight:600;
+font-size:13px;
+letter-spacing:0.5px;
 }
 
-/* =========================
-   MICRO INTERACTION (PREMIUM)
-   ========================= */
-@media (prefers-reduced-motion: no-preference){
-  .footer-brand,
-  .footer-statement{
-    opacity:0;
-    transform:translateY(16px);
-    animation:footerFadeUp 0.8s ease forwards;
-  }
-
-  .footer-statement{
-    animation-delay:0.15s;
-  }
-
-  @keyframes footerFadeUp{
-    to{
-      opacity:1;
-      transform:translateY(0);
-    }
-  }
+.brand-sub{
+font-size:10px;
+color:#64748b;
 }
+
+/* ================= CENTER ================= */
+
+.footer-center{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.live-indicator{
+width:7px;
+height:7px;
+background:#22c55e;
+border-radius:50%;
+animation:livePulse 2s infinite;
+}
+
+@keyframes livePulse{
+0%{box-shadow:0 0 0 0 rgba(34,197,94,0.6);}
+70%{box-shadow:0 0 0 8px rgba(34,197,94,0);}
+100%{box-shadow:0 0 0 0 rgba(34,197,94,0);}
+}
+
+.center-text{
+font-size:11px;
+}
+
+/* ================= COPY ================= */
+
+.footer-copy{
+font-size:11px;
+color:#64748b;
+}
+
+/* Hover Glow */
+.ultra-footer:hover{
+box-shadow:0 0 35px rgba(56,189,248,0.2);
+transition:0.4s;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+.footer-container{
+flex-direction:column;
+text-align:center;
+gap:8px;
+}
+}
+
 </style>
-
-<script>
-/* Gentle fade-in (professional, not flashy) */
-const footer = document.querySelector('.footer-clean');
-footer.style.opacity = 0;
-footer.style.transform = 'translateY(16px)';
-footer.style.transition = '0.6s ease';
-
-window.addEventListener('scroll',()=>{
-  if(footer.getBoundingClientRect().top < window.innerHeight - 100){
-    footer.style.opacity = 1;
-    footer.style.transform = 'translateY(0)';
-  }
-});
-</script>
 </body>
 </html>
