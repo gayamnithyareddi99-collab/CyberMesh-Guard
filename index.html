@@ -125,6 +125,8 @@ body{
       <a href="#about">About</a>
       <a href="#process">Process</a>
       <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#founder">Founder</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -134,11 +136,13 @@ body{
 
   <div class="mobile-menu" id="mobileMenu">
     <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#process">Process</a>
-    <a href="#features">Features</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#founder">Founder</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
   </div>
 </header>
 
@@ -1201,7 +1205,7 @@ document.querySelectorAll(".mobile-menu a").forEach(link=>{
       <!-- FEATURE 1 -->
       <div class="feature-card">
         <div class="light-border"></div>
-        <img src="image1.jpg" class="feature-img">
+        <img src="image1.jpeg" class="feature-img">
         <h3>Unified System Integration</h3>
         <p>Seamless API connectivity across workflow systems, access control and operational platforms.</p>
 
@@ -1224,7 +1228,7 @@ document.querySelectorAll(".mobile-menu a").forEach(link=>{
       <!-- FEATURE 2 -->
       <div class="feature-card">
         <div class="light-border"></div>
-        <img src="image2.jpg" class="feature-img">
+        <img src="image2.jpeg" class="feature-img">
         <h3>Graph-Based Intelligence Layer</h3>
         <p>Structured correlation of digital and physical signals into predictive architecture.</p>
 
@@ -1246,7 +1250,7 @@ document.querySelectorAll(".mobile-menu a").forEach(link=>{
       <!-- FEATURE 3 -->
       <div class="feature-card">
         <div class="light-border"></div>
-        <img src="image3.jpg" class="feature-img">
+        <img src="image3.jpeg" class="feature-img">
         <h3>Hybrid Threat Detection</h3>
         <p>Detect ransomware spread and insider anomalies before disruption.</p>
 
@@ -1268,7 +1272,7 @@ document.querySelectorAll(".mobile-menu a").forEach(link=>{
       <!-- FEATURE 4 -->
       <div class="feature-card">
         <div class="light-border"></div>
-        <img src="image4.jpg" class="feature-img">
+        <img src="image4.jpeg" class="feature-img">
         <h3>Predictive Risk Scoring</h3>
         <p>Impact-weighted scoring prioritises operational severity.</p>
 
@@ -1290,7 +1294,7 @@ document.querySelectorAll(".mobile-menu a").forEach(link=>{
       <!-- FEATURE 5 -->
       <div class="feature-card">
         <div class="light-border"></div>
-        <img src="image5.jpg" class="feature-img">
+        <img src="image5.jpeg" class="feature-img">
         <h3>Real-Time Intelligent Alerts</h3>
         <p>Priority-based alerts strengthen operational resilience.</p>
 
@@ -1312,7 +1316,7 @@ document.querySelectorAll(".mobile-menu a").forEach(link=>{
       <!-- FEATURE 6 -->
       <div class="feature-card">
         <div class="light-border"></div>
-        <img src="image6.jpg" class="feature-img">
+        <img src="image6.jpeg" class="feature-img">
         <h3>GDPR-Ready Compliance Automation</h3>
         <p>Automated governance reporting aligned with UK regulation.</p>
 
@@ -1709,8 +1713,7 @@ cards.forEach(card=>{
           <li><span class="tick">✔</span> GDPR Audit Trails</li>
           <li><span class="tick">✔</span> SME Dashboard</li>
         </ul>
-
-        <button class="price-btn">Start Now</button>
+<a href="#contact" class="price-btn">Start Now</a>
       </div>
 
       <!-- PROFESSIONAL -->
@@ -1726,8 +1729,7 @@ cards.forEach(card=>{
           <li><span class="tick">💦</span> Compliance Automation</li>
           <li><span class="tick">💦</span> Multi-Site Monitoring</li>
         </ul>
-
-        <button class="price-btn">Get Started</button>
+        <a href="#contact" class="price-btn">Get Started</a>
       </div>
 
       <!-- ENTERPRISE -->
@@ -1742,8 +1744,7 @@ cards.forEach(card=>{
           <li><span class="tick">✔</span> Advanced AI Analytics</li>
           <li><span class="tick">✔</span> Priority SLA</li>
         </ul>
-
-        <button class="price-btn">Contact Sales</button>
+        <a href="#contact" class="price-btn">Contact Sales</a>
       </div>
 
     </div>
@@ -2080,15 +2081,6 @@ cards.forEach(card=>{
 
 }
 </style>
-
-<script>
-document.querySelectorAll(".price-btn").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    btn.style.transform="scale(0.95)";
-    setTimeout(()=>{btn.style.transform="scale(1)";},150);
-  });
-});
-</script>
 <!-- ================= FOUNDER SECTION ================= -->
 
 <section class="founder-section" id="founder">
